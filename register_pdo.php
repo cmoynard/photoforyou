@@ -33,13 +33,14 @@ if (isset($_POST['insert'])) {
   }
 
   if($mdp1 == $mdpconf) {
-    $instruction = $pdo->prepare("INSERT INTO users (nom, prenom, email, type, mdp)
-    VALUES  (:nom, :prenom, :email, :type, :mdp1)");
+    $instruction = $pdo->prepare("INSERT INTO photoforyou.users (nom, prenom, email, type, mdp, credit, photo)
+    VALUES  (:nom, :prenom, :email, :type, :mdp1, 0, :photoUser)");
     $instruction->bindParam(':nom', $nom, PDO::PARAM_STR);
     $instruction->bindParam(':prenom', $prenom, PDO::PARAM_STR);
     $instruction->bindParam(':email', $email, PDO::PARAM_STR);
     $instruction->bindParam(':type', $type, PDO::PARAM_STR);
     $instruction->bindParam(':mdp1', $mdp1, PDO::PARAM_STR);
+    $instruction->bindParam(':photoUser', $nom_fichier, PDO::PARAM_STR);
 
     try {
       $instruction->execute();

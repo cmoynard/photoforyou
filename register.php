@@ -14,6 +14,8 @@
 //Le header 2
 include 'header2.php' ?>
 
+<br><br>
+
   <section class="vh-100 bg-image w-100 h-200">
     <div class="mask d-flex align-items-center h-100 gradient-custom-3">
       <div class="container h-100">
@@ -101,7 +103,7 @@ include 'header2.php' ?>
                       </div>
                         <label for="siret" id="siteWeb">Numéro de siret</label>
                         <div class="form-group">
-                          <input type="text" class="form-control col-md-3" name="siret" id="siret" placeholder="Exemple : 12345678900013" pattern="[0-9]{14}" required >
+                          <input type="text" class="form-control col-md-3" name="siret" id="siret" placeholder="Exemple : 12345678900013" pattern="[0-9]{14}">
                           <div class="invalid-feedback">
                           Le numéro de SIRET est obligatoire et ce présente sous cette forme 12345678900013
                         </div>
@@ -113,7 +115,7 @@ include 'header2.php' ?>
                   <div id="blockClient">
                     <div class="form mb-2">
                       <label for="indice">Date de naissance</label>
-                      <input type="date" class="form-control col-md-3" name="dateNaissance" required>
+                      <input type="date" class="form-control col-md-3" name="dateNaissance">
                       <div class="invalid-feedback">
                         La date de naissance est obligatoire
                       </div>
@@ -132,7 +134,7 @@ include 'header2.php' ?>
                   </div>
   
                   <div class="d-flex justify-content-center">
-                    <button type="submit" name="insert" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">S'inscrire</button>
+                    <button type="submit" value="insert" name="insert" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">S'inscrire</button>
                   </div>
   
                   <p class="text-center text-muted mt-5 mb-0">Vous avez déjà un compte ? <a href="login.php" class="fw-bold text-body"><u>Connectez-vous !</u></a></p>
@@ -148,7 +150,7 @@ include 'header2.php' ?>
     </div>
   </section>
 
-
+<br><br><br><br>
 
 
 <script>
