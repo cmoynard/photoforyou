@@ -15,10 +15,10 @@ try {
 if (isset($_POST['insert'])) {
 
   //On récupère les variables.
-  $nom = $_POST['nom'];
-  $prenom = $_POST['prenom'];
-  $email = $_POST['email'];
-  $type = $_POST['choixType'];
+  $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_STRING);
+  $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_STRING);
+  $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+  $type = filter_input(INPUT_POST, 'choixType', FILTER_SANITIZE_STRING);
   $mdp1 = md5($_POST['mdp']);
   $mdpconf = md5($_POST['mdpconf']);
 
