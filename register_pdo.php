@@ -18,8 +18,19 @@ if (isset($_POST['insert'])) {
   $nom = $_POST['nom'];
   $prenom = $_POST['prenom'];
   $email = $_POST['email'];
+  $type = $_POST['choixType'];
   $mdp1 = md5($_POST['mdp']);
   $mdpconf = md5($_POST['mdpconf']);
+
+  if (isset($_FILES) && count($_FILES)>0)
+  {
+    $urlPhoto = $_FILES['photoUser'];
+    $nom_fichier = $urlPhoto['name'];
+    if (strlen($nom_fichier)==0) 
+    {
+      $nom_fichier="user.png";
+    }
+  }
 
   if($mdp1 == $mdpconf) {
     $instruction = $pdo->prepare("INSERT INTO users (nom, prenom, email, mdp)
@@ -27,10 +38,12 @@ if (isset($_POST['insert'])) {
     $instruction->bindParam(':nom', $nom, PDO::PARAM_STR);
     $instruction->bindParam(':prenom', $prenom, PDO::PARAM_STR);
     $instruction->bindParam(':email', $email, PDO::PARAM_STR);
+    $instruction->bindParam(':type', $type, PDO::PARAM_STR);
     $instruction->bindParam(':mdp1', $mdp1, PDO::PARAM_STR);
 
     try {
       $instruction->execute();
+      move_uploaded_file($urlPhoto['tmp_name'],'images/'.$nom_fichier);
       echo '<script>
       alert("Vous êtes bien inscrit !");
       location.href="index.php";
