@@ -1,6 +1,6 @@
 <?php
 $host="localhost";
-$db="photoforyou";
+$database="photoforyou";
 $user="root";
 $password="";
 // connection à la base de données avec test si il y a une erreur

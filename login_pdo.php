@@ -16,12 +16,12 @@ if (isset($_POST['identifier']))
       $query = "SELECT * from photoforyou.users where email = '$mail';";
       $requete = $db->query($query);
       $result = $requete->fetch();
-      $_SESSION['prenomUtilisateur'] = htmlentities($result['Prenom']);
-      $_SESSION['nomUtilisateur'] = htmlentities($result['Nom']);
-      $_SESSION['emailUtilisateur'] = htmlentities($result['Mail']);
-      $_SESSION['credit'] = htmlentities($result['Credit']);
-      $_SESSION['photo'] = "images/".htmlentities($result['Photo']);
-      $_SESSION['type'] = htmlentities ($result['Type']);
+      $_SESSION['prenomUtilisateur'] = htmlentities($result['prenom']);
+      $_SESSION['nomUtilisateur'] = htmlentities($result['nom']);
+      $_SESSION['emailUtilisateur'] = htmlentities($result['email']);
+      $_SESSION['credit'] = htmlentities($result['credit']);
+      $_SESSION['photo'] = "images/".htmlentities($result['photo']);
+      $_SESSION['type'] = htmlentities ($result['type']);
       unset($result);
       header('Location: membres.php');
   }
