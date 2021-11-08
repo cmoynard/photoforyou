@@ -42,7 +42,7 @@ include ('include/entete.inc.php')
                   </div>
   
                   <div class="d-flex justify-content-center">
-                    <button type="identifier" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Se connecter</button>
+                    <button type="identifier" name="identifier" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Se connecter</button>
                   </div>
   
                   <p class="text-center text-muted mt-5 mb-0">Vous n'avez pas de compte ? <a href="register.php" class="fw-bold text-body"><u>Inscrivez-vous !</u></a></p>
