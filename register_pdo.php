@@ -1,16 +1,5 @@
 <?php
-
-$host = 'localhost';
-$dbname = 'photoforyou';
-$username = 'root';
-$password = '';
-
-try {
-  $pdo = new PDO("mysql:host=$host;dbname=$dbname","$username", "$password");
-  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (Exception $exc) {
-  die("Erreur : ".$exc->getMessage());
-}
+include ('include/entete.inc.php');
 
 if (isset($_POST['insert'])) {
 
@@ -25,7 +14,6 @@ if (isset($_POST['insert'])) {
   if (isset($_FILES))
   {
     $urlPhoto = $_FILES['photoUser'];
-    echo $urlPhoto;
     $nom_fichier = $urlPhoto["name"];
     if (strlen($nom_fichier)==0) 
     {
@@ -39,7 +27,7 @@ if (isset($_POST['insert'])) {
   }
 
   if($mdp1 == $mdpconf) {
-    $instruction = $pdo->prepare("INSERT INTO photoforyou.users (nom, prenom, email, type, mdp, credit, photo)
+    $instruction = $db->prepare("INSERT INTO photoforyou.users (nom, prenom, email, type, mdp, credit, photo)
     VALUES  (:nom, :prenom, :email, :type, :mdp1, 0, :photoUser)");
     $instruction->bindParam(':nom', $nom, PDO::PARAM_STR);
     $instruction->bindParam(':prenom', $prenom, PDO::PARAM_STR);
