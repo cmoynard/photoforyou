@@ -25,7 +25,7 @@ include 'header2.php' ?>
               <div class="card-body p-10">
                 <h2 class="text-uppercase text-center mb-1">Formulaire d'inscription :</h2>
   
-                <form action="register_pdo.php" method="post" id="form" novalidate>
+                <form action="register_pdo.php" method="post" id="form" enctype="multipart/form-data" novalidate>
   
                   <div class="form-outline">
                     <label class="form-label" for="nom">Votre Nom</label>

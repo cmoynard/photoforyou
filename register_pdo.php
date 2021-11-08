@@ -22,14 +22,20 @@ if (isset($_POST['insert'])) {
   $mdp1 = md5($_POST['mdp']);
   $mdpconf = md5($_POST['mdpconf']);
 
-  if (isset($_FILES) && count($_FILES)>0)
+  if (isset($_FILES))
   {
     $urlPhoto = $_FILES['photoUser'];
-    $nom_fichier = $urlPhoto['name'];
+    echo $urlPhoto;
+    $nom_fichier = $urlPhoto["name"];
     if (strlen($nom_fichier)==0) 
     {
       $nom_fichier="user.png";
     }
+  } else {
+    echo '<script>
+    alert("Photo ne marche pas.");
+    location.href="register.php";
+    </script>'; 
   }
 
   if($mdp1 == $mdpconf) {
@@ -52,6 +58,8 @@ if (isset($_POST['insert'])) {
     } catch(PDOException $e) {
       echo "<h1>Erreur : </h1>" . $e->getMessage();
       var_dump($_POST);
+      echo $nom_fichier;
+      echo $urlPhoto;
     }
 
   } else {
