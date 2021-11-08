@@ -14,7 +14,7 @@
 //Le header 2
 include 'header2.php'?>
 
-  <section class="vh-100 bg-image" style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.jpg');">
+  <section class="vh-100 bg-image">
     <div class="mask d-flex align-items-center h-100 gradient-custom-3">
       <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -23,16 +23,22 @@ include 'header2.php'?>
               <div class="card-body p-5">
                 <h2 class="text-uppercase text-center mb-5">Se connecter :</h2>
   
-                <form action="login_pdo.php" id="formlog">
+                <form action="login_pdo.php" id="form" method="post" novalidate>
   
                   <div class="form-outline mb-4">
-                    <input type="email" id="form3Example3cg" class="form-control form-control-lg" aria-describedby="emailHelp" />
-                    <label class="form-label" for="form3Example3cg">Votre email</label>
+                    <label class="form-label" for="email">Votre email</label>
+                    <input type="email" id="email" name="mail" class="form-control form-control-lg" aria-describedby="emailHelp" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" minlength="3" required>
+                    <div class="invalid-feedback">
+                      Il vous faut fournir un email valide.
+                    </div>
                   </div>
   
                   <div class="form-outline mb-4">
-                    <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
-                    <label class="form-label" for="form3Example4cg">Mot de passe</label>
+                    <label class="form-label" for="motdepasse">Mot de passe</label>
+                    <input type="password" id="motdepasse" name="motdepasse" class="form-control form-control-lg" minlength="8" required>
+                    <div class="invalid-feedback">
+                      Il vous faut fournir un mot de passe valide.
+                    </div>
                   </div>
   
                   <div class="form-check d-flex justify-content-center mb-5">
@@ -65,6 +71,33 @@ include 'header2.php'?>
   //le footer
   include 'footer.php' ?>
   </section>
+
+  <script>
+  var mail=document.getElementById("email");
+mail.addEventListener("blur", function (evt) {
+  console.log("Perte de focus pour le mail");
+});
+
+var motDePasse=document.getElementById("motdepasse");
+motDePasse.addEventListener("blur", function (evt) {
+  console.log("Perte de focus pour le mdp");
+});
+
+(function() {
+  "use strict"
+  window.addEventListener("load", function() {
+    var form = document.getElementById("form")
+    form.addEventListener("submit", function(event) {
+      if (form.checkValidity() == false) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+      form.classList.add("was-validated")
+    }, false)
+  }, false)
+
+}())
+</script>
 
 
 
