@@ -64,8 +64,8 @@
                 </form>
         
                 <div class="text-end">
-                  <a href="login.php"><button type="button" class="btn btn-outline-light me-2">Mon profil</button>
-                  <a href="register.php"><button type="button" class="btn btn-warning">Déconnexion</button></a>
+                  <a href="profil.php"><button type="button" class="btn btn-outline-light me-2">Mon profil</button>
+                  <a href="deconnexion.php"><button type="button" class="btn btn-warning">Déconnexion</button></a>
                 </div>
               </div>
             </div>

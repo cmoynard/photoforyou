@@ -6,11 +6,11 @@ if (isset($_POST['identifier']))
   $mail =  htmlentities($_POST['mail']);
   $motdepasse = md5($_POST['motdepasse']);
   $requete = 'SELECT id from photoforyou.users where email = :mail and mdp = :motdepasse';
-  $instruction = $db->prepare($requete);
-  $instruction->bindParam(':mail', $mail, PDO::PARAM_STR);
-  $instruction->bindParam(':motDePasse', $motdepasse, PDO::PARAM_STR);
-  $instruction->execute();
-  $num = $instruction->fetchAll();
+  $instructions = $db->prepare($requete);
+  $instructions->bindParam(':mail', $mail, PDO::PARAM_STR);
+  $instructions->bindParam(':motdepasse', $motdepasse, PDO::PARAM_STR);
+  $instructions->execute();
+  $num = $instructions->fetchAll();
   try {
     if (count($num)>0)
     {
@@ -39,7 +39,6 @@ if (isset($_POST['identifier']))
     echo "<h1>Erreur : </h1>" . $e->getMessage();
     var_dump($_POST);
     echo $motdepasse;
-    echo $num;
   }
 
 }

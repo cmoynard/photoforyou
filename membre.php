@@ -11,6 +11,7 @@
       		<?php echo '<p class="lead">Bonjour '.htmlentities($_SESSION['nomUtilisateur']).' comment allez vous ?</p>'?>
       		<hr class="my-4">
     </div>
+  </div>
   <?php
     include ("include/piedpage.inc.php");
 ?>
