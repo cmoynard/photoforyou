@@ -40,7 +40,7 @@ if (isset($_POST['insert'])) {
       $instruction->execute();
       move_uploaded_file($urlPhoto['tmp_name'],'images/'.$nom_fichier);
       echo '<script>
-      alert("Vous êtes bien inscrit !");
+      alert("Vous êtes bien inscrit ! - Vous pouvez vous connecter.");
       location.href="index.php";
       </script>';
     } catch(PDOException $e) {

@@ -21,7 +21,7 @@
     <body>
 
     <?php
-    if (!isset($_SESSION['login'])) {
+    if ((!isset($_SESSION['login'])) OR ($_SESSION['type'])=='visiteur') {
       echo '
     <header class="p-3 bg-dark text-white">
         <div class="container">
