@@ -19,6 +19,7 @@ if (isset($_POST['identifier']))
       $query = "SELECT * from photoforyou.users where email = '$mail';";
       $requete = $db->query($query);
       $result = $requete->fetch();
+      $_SESSION['idUtilisateur'] = htmlentities($result['id']);
       $_SESSION['prenomUtilisateur'] = htmlentities($result['prenom']);
       $_SESSION['nomUtilisateur'] = htmlentities($result['nom']);
       $_SESSION['emailUtilisateur'] = htmlentities($result['email']);
