@@ -18,7 +18,7 @@
           <?php echo "<p class='lead'>Vos crédit(s) : ".$_SESSION['credit']."</p>" ?>
           <hr class="my-4">
           <a href="rajcredit.php"><button type="button" class="btn btn-lg btn-outline-dark">Rajouter des crédits.</button></a>
-          <hr class="my-4">
+          <hr class="my-4"><br>
     </div>
   </div>
   <?php

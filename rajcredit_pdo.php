@@ -10,6 +10,9 @@ if (isset($_POST['rajouter'])) {
   
       try {
         $instruction->execute();
+        $query = "SELECT * from photoforyou.users where id = ".$_SESSION['idUtilisateur'].";";
+        $requete = $db->query($query);
+        $result = $requete->fetch();
         $_SESSION['credit'] = htmlentities($result['credit']);
         echo '<script>
         alert("Vous avez bien rajouter des crédits !");
