@@ -10,7 +10,7 @@
   </div>
         <?php
           if ($_SESSION['login']=true AND $_SESSION['type']=='client') {
-           echo '<button type="button" class="btn btn-lg btn-outline-dark">Acheter des photos</button>
+           echo '<a href="galerie.php"><button type="button" class="btn btn-lg btn-outline-dark">Acheter des photos</button></a>
                 <hr class="my-4">';
           }
           elseif ($_SESSION['login']=true AND $_SESSION['type']=='photographe') {
