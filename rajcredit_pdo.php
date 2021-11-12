@@ -10,6 +10,7 @@ if (isset($_POST['rajouter'])) {
   
       try {
         $instruction->execute();
+        $_SESSION['credit'] = htmlentities($result['credit']);
         echo '<script>
         alert("Vous avez bien rajouter des crédits !");
         location.href="profil.php";
