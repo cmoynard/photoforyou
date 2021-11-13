@@ -19,6 +19,8 @@
           <hr class="my-4">
           <a href="rajcredit.php"><button type="button" class="btn btn-lg btn-outline-dark">Rajouter des crédits.</button></a>
           <hr class="my-4"><br>
+          <p class="lead">Photos acheté : </p>
+          <?php echo "<img src=".$_SESSION['photoAchat']." id='photo'  width=12% class='img-responsive float-left' >" ?>
     </div>
   </div>
   <?php

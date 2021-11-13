@@ -14,16 +14,21 @@
       <hr class="my-4">
     </div>
   </div>
+  <form action="achat.php" method="POST">
   <div class="container">
   <div class="row">
     <div class="col-sm-3">
       <div class="card">
-        <?php $idPhoto = 1;
+        <?php 
+          $idPhoto = 1;
           $query = "SELECT * from photoforyou.galerie where idPhoto = $idPhoto;";
           $requete = $db->query($query);
           $result = $requete->fetch();
           $galPhoto = "images/galerie/".htmlentities($result['nomPhoto']);
-          echo "<img src=$galPhoto class='card-img-top' alt='...'/>";
+          ?> 
+          <input type="number" name="nbCredit" value=45 style="display: none;"/> 
+          <input type="hidden" name="idAchat" value="<?php echo $idPhoto; ?>" />
+          <?php echo "<img src=$galPhoto class='card-img-top' alt='...'/>";
           $idPhoto++;?>
 
         <div class="card-body">
@@ -32,7 +37,7 @@
             Une belle fleure prise en photo par le talentueux
             Sungondese-Jr.
           </p>
-          <a href="achat.php" class="btn btn-primary">Acheter pour 40 crédits</a>
+          <button type="submit" value="acheter" name="acheter" class="btn btn-success">Acheter pour 45 crédits</button>
         </div>
       </div>
     </div>
@@ -43,7 +48,10 @@
           $requete = $db->query($query);
           $result = $requete->fetch();
           $galPhoto = "images/galerie/".htmlentities($result['nomPhoto']);
-          echo "<img src=$galPhoto class='card-img-top' alt='...' />";
+          ?> 
+          <input type="number" name="nbCredit" value=45 style="display: none;"/> 
+          <input type="hidden" name="idAchat" value="<?php echo $idPhoto; ?>" />
+          <?php echo "<img src=$galPhoto class='card-img-top' alt='...'/>";
           $idPhoto++;?>
 
         <div class="card-body">
@@ -52,7 +60,7 @@
             Some quick example text to build on the card title and make up the bulk of the
             card's content.
           </p>
-          <a href="#!" class="btn btn-primary">Button</a>
+          <button type="submit" value="acheter" name="acheter" class="btn btn-success">Acheter pour 45 crédits</button>
         </div>
       </div>
     </div>
@@ -72,7 +80,7 @@
             Some quick example text to build on the card title and make up the bulk of the
             card's content.
           </p>
-          <a href="#!" class="btn btn-primary">Button</a>
+          <button type="submit" value="acheter" name="acheter" class="btn btn-success">Acheter pour 45 crédits</button>
         </div>
       </div>
     </div>
@@ -92,12 +100,13 @@
             Some quick example text to build on the card title and make up the bulk of the
             card's content.
           </p>
-          <a href="#!" class="btn btn-primary">Button</a>
+          <button type="submit" value="acheter" name="acheter" class="btn btn-success">Acheter pour 45 crédits</button>
         </div>
       </div>
     </div>
   </div>
   </div>
+  </form>
 
   <div class="container">
     <div class="jumbotron">
