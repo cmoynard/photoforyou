@@ -36,10 +36,10 @@
 
           <ul class="list-unstyled mb-0">
             <li>
-              <a href="register.html" class="text-white">S'inscrire</a>
+              <a href="register.php" class="text-white">S'inscrire</a>
             </li>
             <li>
-              <a href="login.html" class="text-white">Se connecter</a>
+              <a href="login.php" class="text-white">Se connecter</a>
             </li>
           </ul>
         </div>
