@@ -49,8 +49,8 @@ et toucher une commission sur chaque vente.
 
 ## SCD
 
-![Alt](SCD.png)
+![Diagramme SCD.png](SCD.png)
 
 ## Diagramme de cas d'utilisation
 
-![Alt](CasUtilisation.png)
+![Diagramme CasUtilisation.png](CasUtilisation.png)
