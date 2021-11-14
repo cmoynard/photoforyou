@@ -49,4 +49,4 @@ et toucher une commission sur chaque vente.
 
 ## SCD
 
-![Alt](SCD.svd)
+![Alt](SCD.png)
