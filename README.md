@@ -50,3 +50,7 @@ et toucher une commission sur chaque vente.
 ## SCD
 
 ![Alt](SCD.png)
+
+## Diagramme de cas d'utilisation
+
+![Alt](CasUtilisation.png)
