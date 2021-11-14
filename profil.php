@@ -18,9 +18,13 @@
           <?php echo "<p class='lead'>Vos crédit(s) : ".$_SESSION['credit']."</p>" ?>
           <hr class="my-4">
           <a href="rajcredit.php"><button type="button" class="btn btn-lg btn-outline-dark">Rajouter des crédits.</button></a>
-          <hr class="my-4"><br>
+          <hr class="my-4">
           <p class="lead">Photos acheté : </p>
-          <?php echo "<img src=".$_SESSION['photoAchat']." id='photo'  width=12% class='img-responsive float-left' >" ?>
+          <?php if (isset($_SESSION['photoAchat'])) 
+          {
+            echo "<img src=".$_SESSION['photoAchat']." id='photo'  width=12% class='img-responsive float-left' >" ;
+            echo "<hr class='my-4'>";
+          } ?>
     </div>
   </div>
   <?php
