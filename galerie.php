@@ -58,10 +58,9 @@
           $idPhoto++;?>
 
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
+          <h5 class="card-title">Paysage stylé</h5>
           <p class="card-text">
-            Some quick example text to build on the card title and make up the bulk of the
-            card's content.
+            Un paysage féérique qui donne envie de voyager.
           </p>
           <button type="submit" value="acheter" name="acheter" class="btn btn-success">Acheter pour 45 crédits</button>
         </div>
@@ -83,10 +82,9 @@
           $idPhoto++;?>
           
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
+          <h5 class="card-title">Roches</h5>
           <p class="card-text">
-            Some quick example text to build on the card title and make up the bulk of the
-            card's content.
+            Des rochers qui font plaisir #moumou.
           </p>
           <button type="submit" value="acheter" name="acheter" class="btn btn-success">Acheter pour 45 crédits</button>
         </div>
@@ -108,10 +106,9 @@
           $idPhoto++;?>
           
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
+          <h5 class="card-title">Fortnite</h5>
           <p class="card-text">
-            Some quick example text to build on the card title and make up the bulk of the
-            card's content.
+            Un lieu emblématique du jeu populaire Fortnite Battle royale.
           </p>
           <button type="submit" value="acheter" name="acheter" class="btn btn-success">Acheter pour 45 crédits</button>
         </div>
