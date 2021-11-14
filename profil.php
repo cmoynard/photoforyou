@@ -24,6 +24,8 @@
             echo "<img src=".$_SESSION['photoAchat']." id='photo'  width=12% class='img-responsive float-left' >" ;
             echo "<hr class='my-4'>";
           } ?>
+          <hr class="my-4">
+          <a href="supprUser.php"><button type="button" class="btn btn-lg btn-outline-danger mb-2">! Supprimer votre compte !</button></a>
     </div>
   </div>
   <?php
