@@ -11,7 +11,6 @@
           <?php echo "<img src=".$_SESSION['photo']." id='photo'  width=12% class='img-responsive float-left' >" ?>
       		<?php echo '<p class="lead">Bonjour '.$_SESSION['nomUtilisateur'].' !</p>'?>
       		<hr class="my-4">
-          <?php echo "<p class='lead'>ID : ".$_SESSION['idUtilisateur']."</p>" ?>
           <?php echo "<p class='lead'>Nom : ".$_SESSION['nomUtilisateur']."</p>" ?>
           <?php echo "<p class='lead'>Prénom : ".$_SESSION['prenomUtilisateur']."</p>" ?>
           <?php echo "<p class='lead'>Courriel : ".$_SESSION['emailUtilisateur']."</p>" ?>
