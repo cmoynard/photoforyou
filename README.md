@@ -43,4 +43,10 @@ et toucher une commission sur chaque vente.
 
 ## MLD
 
-- 
+- Users (<ins>id</ins>, nom, prenom, email, type, mdp, credit, photo);
+- Client (<ins>#idClient</ins>, dateNaissance);
+- Photographe (<ins>#idPhotographe</ins>, site, siret);
+
+## SCD
+
+![Alt](SCD.svd)
