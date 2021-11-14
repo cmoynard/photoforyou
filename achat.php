@@ -33,12 +33,10 @@ if (isset($_POST['acheter']))
   }
   else
   {
-      var_dump($_POST);
-      var_dump($num);
-      //echo '<script>
-      //alert("Vous n\'avez pas assez de crédits.");
-      //location.href="galerie.php";
-      //</script>';
+      echo '<script>
+      alert("Vous n\'avez pas assez de crédits. Vous pouvez en rajouter sur votre profil !");
+      location.href="galerie.php";
+      </script>';
     }
   } catch (PDOException $e) {
     echo "<h1>Erreur : </h1>" . $e->getMessage();
