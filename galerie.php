@@ -8,8 +8,8 @@
   ?>
 	<div class="container">
     <div class="jumbotron">
-      <h1 class="display-4">Votre profil de <?php echo $_SESSION['type'] ?></h1>
-      <?php echo '<p class="lead">Bonjour '.$_SESSION['nomUtilisateur'].' !</p>'?>
+      <h1 class="display-4">Parcourir la galerie</h1>
+      <?php echo '<p class="lead">Connecté en tant que '.$_SESSION['nomUtilisateur'].' '.$_SESSION['prenomUtilisateur'].'</p>'?>
       <?php echo "<p class='lead'>Vos crédit(s) : ".$_SESSION['credit']."</p>" ?>
       <hr class="my-4">
     </div>
@@ -30,7 +30,7 @@
         $result = $requete->fetch();
         $galPhoto = "images/galerie/".htmlentities($result['nomPhoto']);
         echo "
-        <div class='col-sm-3'>
+        <div class='col-sm-3 mb-3'>
           <form action='achat.php' method='POST'>
             <div class='card'>
               <input type='number' name='nbCredit' value=".$value['prixCard']." style='display: none;'/> 

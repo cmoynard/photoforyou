@@ -115,7 +115,7 @@ include ('include/entete.inc.php')
                     <div class="d-flex justify-content-left mb-2">
                       <div class="float-left">
                       <input type="file" onchange="actuPhoto(this)" class="form-control mb-2" id="photoUser" name="photoUser" accept="image/jpeg, image/png, image/gif">
-                      <img src="" id="photo" class="img-responsive float-right" style="width: 150px; height: 150px;">
+                      <img src="" id="photo" class="img-responsive float-right" width=20%>
                       </div>
                     </div>
                     
