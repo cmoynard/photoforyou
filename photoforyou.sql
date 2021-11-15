@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 15 nov. 2021 à 16:08
+-- Généré le : lun. 15 nov. 2021 à 17:30
 -- Version du serveur :  8.0.21
 -- Version de PHP : 7.3.21
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `galerie` (
   `descCard` varchar(255) NOT NULL,
   `prixCard` int NOT NULL,
   PRIMARY KEY (`idPhoto`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `galerie`
@@ -48,7 +48,8 @@ INSERT INTO `galerie` (`idPhoto`, `nomPhoto`, `nomCard`, `descCard`, `prixCard`)
 (4, 'imagequatre.jpg', 'Fortnite', 'Un lieu emblématique du jeu populaire Fortnite Battle royale.', 100),
 (5, 'téléchargé.jpg', 'Daniel Craig', 'Le c&eacute;l&egrave;bre acteur qui incarne James Bond dans les films du m&ecirc;me nom.', 75),
 (6, 'FDERXFzXMAcZIuI.jpg', 'Doigby', 'Le streamer qui &agrave; &eacute;t&eacute; le GOAT durant le ZEVENT 2021', 400),
-(7, 'Null-on-Twitter_-_...-_.jpg', 'Denji', 'Le protagoniste de Chainsaw Man, il est bg', 5000);
+(7, 'Null-on-Twitter_-_...-_.jpg', 'Denji', 'Le protagoniste de Chainsaw Man, il est bg', 5000),
+(8, 'IMG_20210519_140214_117.jpg', 'Pokku', 'L\'homme le plus charismatique de l\'histoire (y a des grenouilles)', 6969);
 
 -- --------------------------------------------------------
 
@@ -66,17 +67,20 @@ CREATE TABLE IF NOT EXISTS `users` (
   `mdp` varchar(32) NOT NULL,
   `credit` int NOT NULL,
   `photo` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `etat` varchar(25) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`id`, `nom`, `prenom`, `email`, `type`, `mdp`, `credit`, `photo`) VALUES
-(10, 'Evin', 'Baptiste', 'baptbg@gmail.com', 'photographe', '5e8667a439c68f5145dd2fcbecf02209', 4610, 'FDERXFzXMAcZIuI.jpg'),
-(5, 'Chovanec', 'Jeremy', 'grosbg@gmail.com', 'client', '25d55ad283aa400af464c76d713c07ad', 3905, 'FDERXFzXMAcZIuI.jpg'),
-(12, 'MONROCQ', 'Ugo', 'aaaa@aa.fr', 'client', '25d55ad283aa400af464c76d713c07ad', 100, 'téléchargé.jpg');
+INSERT INTO `users` (`id`, `nom`, `prenom`, `email`, `type`, `mdp`, `credit`, `photo`, `etat`) VALUES
+(10, 'Evin', 'Baptiste', 'baptbg@gmail.com', 'photographe', '5e8667a439c68f5145dd2fcbecf02209', 4610, 'FDERXFzXMAcZIuI.jpg', 'valid'),
+(5, 'Chovanec', 'Jeremy', 'grosbg@gmail.com', 'client', '25d55ad283aa400af464c76d713c07ad', 3805, 'FDERXFzXMAcZIuI.jpg', 'banni'),
+(12, 'MONROCQ', 'Ugo', 'aaaa@aa.fr', 'client', '25d55ad283aa400af464c76d713c07ad', 100, 'téléchargé.jpg', 'valid'),
+(13, 'admin', 'admin', 'admin@admin.com', 'admin', '3a4ebf16a4795ad258e5408bae7be341', 0, 'admin.jpg', 'valid'),
+(14, 'Caccu', 'Pokku', 'pokku.gaming@gmail.com', 'photographe', '25d55ad283aa400af464c76d713c07ad', 2031, 'IMG_20210519_140214_117.jpg', 'valid');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

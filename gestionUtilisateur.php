@@ -13,6 +13,7 @@ if($_SESSION['type'] != 'admin'){
 		<div class="container">
 		<div class="jumbotron">
 		<h1 class="text-center mt-4">Gestion Utilisateur</h1>
+		<hr class="my-4">
         <div class="row justify-content-center mt-4">
 				<table class="table table-bordered table-striped table-responsive-md">
 					<tr>
@@ -50,6 +51,7 @@ if($_SESSION['type'] != 'admin'){
         			?>
 				</table>
 			</div>
+			<hr class="my-4"><br><br><br><br><br><br><br>
 		</div>
 		</div>
 		<?php include "include/piedpage.inc.php"; ?>

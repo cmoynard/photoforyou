@@ -18,11 +18,14 @@ if (isset($_POST['identifier']))
   $instructions->execute();
   $num = $instructions->fetchAll();
   try {
-    if (count($num)>0)
+    if($etat == 'banni'){ //Verification du banissement
+      echo '<script>
+      alert("!! VOUS ETES BANNI !!");
+      location.href="index.php";
+      </script>';
+    }
+    elseif (count($num)>0) //sinon on verifie qu'on a trouvé le user dans la bdd et on crée les données de session
     {
-      if($etat == 'banni'){ //Verification du baniisement
-        header('register.php');
-      } else {
       // On recupère les données dans les variables SESSION
       $_SESSION['login'] = true;
       $query = "SELECT * from photoforyou.users where email = '$mail';";
@@ -37,7 +40,7 @@ if (isset($_POST['identifier']))
       $_SESSION['type'] = htmlentities ($result['type']);
       unset($result);
       header('Location: membre.php');
-    }
+    
   }
   else
   {
