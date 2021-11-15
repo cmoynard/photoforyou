@@ -14,7 +14,7 @@
                 <hr class="my-4">';
           }
           elseif ($_SESSION['login']=true AND $_SESSION['type']=='photographe') {
-            echo '<a href="galerie.php"><button type="button" class="btn btn-lg btn-outline-dark">Acheter des photos</button></a> <button type="button" class="btn btn-lg btn-outline-dark">Publier des photos</button>
+            echo '<a href="galerie.php"><button type="button" class="btn btn-lg btn-outline-dark">Acheter des photos</button></a> <a href="vente.php"><button type="button" class="btn btn-lg btn-outline-dark">Publier des photos</button></a>
                 <hr class="my-4">';
           } else {
             echo '<h1>Vous n\'êtes pas connecté !</h1>

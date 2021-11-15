@@ -29,6 +29,7 @@
         $requete = $db->query($query);
         $result = $requete->fetch();
         $galPhoto = "images/galerie/".htmlentities($result['nomPhoto']);
+
         echo "
         <div class='col-sm-3 mb-3'>
           <form action='achat.php' method='POST'>
@@ -58,4 +59,5 @@
   </div>
   <?php
     include ("include/piedpage.inc.php");
+    imagedestroy($img);
 ?>

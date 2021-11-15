@@ -8,7 +8,7 @@
 	<div class="container">
     	<div class="jumbotron">
       		<h1 class="display-4">Votre profil de <?php echo $_SESSION['type'] ?></h1>
-          <?php echo "<img src=".$_SESSION['photo']." id='photo'  width=12% class='img-responsive float-left' >" ?>
+          <?php echo "<img src=".$_SESSION['photo']." id='photo'  width=15% class='img-responsive float-left' >" ?>
       		<?php echo '<p class="lead">Bonjour '.$_SESSION['nomUtilisateur'].' !</p>'?>
       		<hr class="my-4">
           <?php echo "<p class='lead'>Nom : ".$_SESSION['nomUtilisateur']."</p>" ?>
