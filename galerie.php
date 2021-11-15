@@ -16,105 +16,38 @@
   </div>
   
   <div class="container">
-  <div class="row">
-    <div class="col-sm-3">
-    <form action="achat.php" method="POST">
-      <div class="card">
-        <?php 
-          $idPhoto = 1;
-          $query = "SELECT * from photoforyou.galerie where idPhoto = $idPhoto;";
-          $requete = $db->query($query);
-          $result = $requete->fetch();
-          $galPhoto = "images/galerie/".htmlentities($result['nomPhoto']);
-          ?> 
-          <input type="number" name="nbCredit" value=45 style="display: none;"/> 
-          <input type="hidden" name="idAchat" value="<?php echo $idPhoto; ?>" />
-          <?php echo "<img src=$galPhoto class='card-img-top' alt='...'/>";
-          $idPhoto++;?>
+  <div class="row row-cols-1 row-cols-md-3">
+  <?php
+        $req= "SELECT * FROM photoforyou.galerie";
+        $ins=$db->prepare($req);
+        $ins->execute();
+        $num = $ins->fetchAll();
 
-        <div class="card-body">
-          <h5 class="card-title">Jolie fleure</h5>
-          <p class="card-text">
-            Une belle fleure prise en photo par le talentueux
-            Sungondese-Jr.
-          </p>
-          <button type="submit" value="acheter" name="acheter" class="btn btn-success">Acheter pour 45 crédits</button>
-        </div>
-      </div>
-    </form>
-    </div>
-    <div class="col-sm-3">
-    <form action="achat.php" method="POST">
-      <div class="card">
-      <?php
-          $query = "SELECT * from photoforyou.galerie where idPhoto = $idPhoto;";
-          $requete = $db->query($query);
-          $result = $requete->fetch();
-          $galPhoto = "images/galerie/".htmlentities($result['nomPhoto']);
-          ?> 
-          <input type="number" name="nbCredit" value=45 style="display: none;"/> 
-          <input type="hidden" name="idAchat" value="<?php echo $idPhoto; ?>" />
-          <?php echo "<img src=$galPhoto class='card-img-top' alt='...'/>";
-          $idPhoto++;?>
+    
+        foreach ($num as $value) {
+        $query = "SELECT * from photoforyou.galerie where idPhoto = ".$value['idPhoto'].";";
+        $requete = $db->query($query);
+        $result = $requete->fetch();
+        $galPhoto = "images/galerie/".htmlentities($result['nomPhoto']);
+        echo "
+        <div class='col-sm-3'>
+          <form action='achat.php' method='POST'>
+            <div class='card'>
+              <input type='number' name='nbCredit' value=".$value['prixCard']." style='display: none;'/> 
+              <input type='hidden' name='idAchat' value='".$value['idPhoto']." ?>' />
+              <img src=".$galPhoto." class='card-img-top' alt='".$value['idPhoto']."'/>
+              <div class='card-body'>
+                <h5 class='card-title'>".$value['nomCard']."</h5>
+                <p class='card-text'>
+                  ".$value['descCard']."
+                </p>
+                <button type='submit' value='acheter' name='acheter' class='btn btn-success'>Acheter pour ".$value['prixCard']." crédits</button>
+              </div>
+            </div>
+          </form>
+        </div>";
+        } ?>
 
-        <div class="card-body">
-          <h5 class="card-title">Paysage stylé</h5>
-          <p class="card-text">
-            Un paysage féérique qui donne envie de voyager.
-          </p>
-          <button type="submit" value="acheter" name="acheter" class="btn btn-success">Acheter pour 45 crédits</button>
-        </div>
-      </div>
-    </form>
-    </div>
-    <div class="col-sm-3">
-    <form action="achat.php" method="POST">
-      <div class="card">
-      <?php
-          $query = "SELECT * from photoforyou.galerie where idPhoto = $idPhoto;";
-          $requete = $db->query($query);
-          $result = $requete->fetch();
-          $galPhoto = "images/galerie/".htmlentities($result['nomPhoto']);
-          ?> 
-          <input type="number" name="nbCredit" value=45 style="display: none;"/> 
-          <input type="hidden" name="idAchat" value="<?php echo $idPhoto; ?>" />
-          <?php echo "<img src=$galPhoto class='card-img-top' alt='...'/>";
-          $idPhoto++;?>
-          
-        <div class="card-body">
-          <h5 class="card-title">Roches</h5>
-          <p class="card-text">
-            Des rochers qui font plaisir #moumou.
-          </p>
-          <button type="submit" value="acheter" name="acheter" class="btn btn-success">Acheter pour 45 crédits</button>
-        </div>
-      </div>
-    </form>
-    </div>
-    <div class="col-sm-3">
-    <form action="achat.php" method="POST">
-      <div class="card">
-      <?php
-          $query = "SELECT * from photoforyou.galerie where idPhoto = $idPhoto;";
-          $requete = $db->query($query);
-          $result = $requete->fetch();
-          $galPhoto = "images/galerie/".htmlentities($result['nomPhoto']);
-          ?> 
-          <input type="number" name="nbCredit" value=45 style="display: none;"/> 
-          <input type="hidden" name="idAchat" value="<?php echo $idPhoto; ?>" />
-          <?php echo "<img src=$galPhoto class='card-img-top' alt='...'/>";
-          $idPhoto++;?>
-          
-        <div class="card-body">
-          <h5 class="card-title">Fortnite</h5>
-          <p class="card-text">
-            Un lieu emblématique du jeu populaire Fortnite Battle royale.
-          </p>
-          <button type="submit" value="acheter" name="acheter" class="btn btn-success">Acheter pour 45 crédits</button>
-        </div>
-      </div>
-    </form>
-    </div>
   </div>
   </div>
 
