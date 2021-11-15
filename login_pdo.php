@@ -2,9 +2,15 @@
 include ('include/entete.inc.php');
 
 if (isset($_POST['identifier']))
-{
+{ //Preparation de la verification du banissement
   $mail =  htmlentities($_POST['mail']);
   $motdepasse = md5($_POST['motdepasse']);
+  $req_etat = "SELECT etat FROM photoforyou.users WHERE email = '$mail'";
+  $r_e = $db->prepare($req_etat);
+  $r_e->execute();
+  $result_r_e = $r_e->fetch(\PDO::FETCH_OBJ);
+  $etat =  $result_r_e->etat;
+
   $requete = 'SELECT id from photoforyou.users where email = :mail and mdp = :motdepasse';
   $instructions = $db->prepare($requete);
   $instructions->bindParam(':mail', $mail, PDO::PARAM_STR);
@@ -14,7 +20,10 @@ if (isset($_POST['identifier']))
   try {
     if (count($num)>0)
     {
-      // On récupère le prénom pour le message d'accueil
+      if($etat == 'banni'){ //Verification du baniisement
+        header('register.php');
+      } else {
+      // On recupère les données dans les variables SESSION
       $_SESSION['login'] = true;
       $query = "SELECT * from photoforyou.users where email = '$mail';";
       $requete = $db->query($query);
@@ -28,6 +37,7 @@ if (isset($_POST['identifier']))
       $_SESSION['type'] = htmlentities ($result['type']);
       unset($result);
       header('Location: membre.php');
+    }
   }
   else
   {

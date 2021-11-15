@@ -27,8 +27,8 @@ if (isset($_POST['insert'])) {
   }
 
   if($mdp1 == $mdpconf) {
-    $instruction = $db->prepare("INSERT INTO photoforyou.users (nom, prenom, email, type, mdp, credit, photo)
-    VALUES  (:nom, :prenom, :email, :type, :mdp1, 0, :photoUser)");
+    $instruction = $db->prepare("INSERT INTO photoforyou.users (nom, prenom, email, type, mdp, credit, photo, etat)
+    VALUES  (:nom, :prenom, :email, :type, :mdp1, 0, :photoUser, 'valid')");
     $instruction->bindParam(':nom', $nom, PDO::PARAM_STR);
     $instruction->bindParam(':prenom', $prenom, PDO::PARAM_STR);
     $instruction->bindParam(':email', $email, PDO::PARAM_STR);

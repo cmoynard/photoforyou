@@ -82,7 +82,7 @@
                     <li><a href="index.php" class="nav-link px-2 text-white">Accueil</a></li>
                     <li><a href="galerie.php" class="nav-link px-2 text-white">Acheter</a></li>
                     <li><a href="vente.php" class="nav-link px-2 text-white">Vendre</a></li>
-                    <li><a href="ban.php" class="nav-link px-2 text-white">Gestion Utilisateurs</a></li>
+                    <li><a href="gestionUtilisateur.php" class="nav-link px-2 text-white">Gestion Utilisateurs</a></li>
                   </ul>
           
                   <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
