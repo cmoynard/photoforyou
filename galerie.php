@@ -59,5 +59,4 @@
   </div>
   <?php
     include ("include/piedpage.inc.php");
-    imagedestroy($img);
 ?>

@@ -1,4 +1,6 @@
 <?php
+include "include/entete.inc.php";
+
 if(!isset($_SESSION['login'])){
     header('location:index.php');
     exit();
@@ -7,13 +9,13 @@ if($_SESSION['type'] != 'admin'){
 	header('location:index.php');
 	exit();
 }
-
-include "include/entete.inc.php"
 ?>
+		<div class="container">
+		<div class="jumbotron">
 		<h1 class="text-center mt-4">Gestion Utilisateur</h1>
+		<hr class="my-4">
         <div class="row justify-content-center mt-4">
-            <div class="col-6 text-center">
-				<table class="table table-bordered table-striped">
+				<table class="table table-bordered table-striped table-responsive-md">
 					<tr>
 						<td>Id</td>
 						<td>Nom</td>
@@ -24,7 +26,7 @@ include "include/entete.inc.php"
 						<td>Etat</td>
 					</tr>
 					<?php
-        			    $req = $bdd->query("SELECT * FROM User WHERE grade != 'admin'");
+        			    $req = $db->query("SELECT * FROM photoforyou.users WHERE type != 'admin'");
         			    $data = $req->fetchAll();
         			    echo '';
         			    foreach ($data as $li){
@@ -32,28 +34,24 @@ include "include/entete.inc.php"
         			        echo '<td>'.$li['id'].'</td>';
         			        echo '<td>'.$li['nom'].'</td>';
         			        echo '<td>'.$li['prenom'].'</td>';
-        			        echo '<td>'.$li['mail'].'</td>';
-        			        echo '<td>'.$li['grade'].'</td>';
-        			        echo '<td>'.$li['credits'].'</td>';
-					// * Affichage en fonction l'état, et renvoit vers modif-etat-user.php avec $_GET['id'] && $_GET['etat']
-          //! AJOUTER ETAT SUR BDD
-          //! AJOUTER MODIF ETAT VIA GITHUB IOAMRA
-          //! CHANGER LE STYLE
+        			        echo '<td>'.$li['email'].'</td>';
+        			        echo '<td>'.$li['type'].'</td>';
+        			        echo '<td>'.$li['credit'].'</td>';
+								// * Affichage en fonction l'état, et renvoit vers modif-etat-user.php avec $_GET['id'] && $_GET['etat']
+          				
 							if($li['etat'] == 'banni'){
-								echo '<td><a href="modif-etat-user.php?id='.$li['id'].'&etat='.$li['etat'].'"><button class="h-100 w-100 btn btn-danger">'.$li['etat'].'</td>';
-							}
-
-							if($li['etat'] == 'attValid'){
-								echo '<td><a href="modif-etat-user.php?id='.$li['id'].'&etat='.$li['etat'].'"><button class="h-100 w-100 btn btn-warning">'.$li['etat'].'</td>';
+								echo '<td><a href="gestion_pdo.php?id='.$li['id'].'&etat='.$li['etat'].'"><button class="h-100 w-100 btn btn-danger">'.$li['etat'].'</td>';
 							}
 						
 							if($li['etat'] == 'valid'){
-								echo '<td><a href="modif-etat-user.php?id='.$li['id'].'&etat='.$li['etat'].'"><button class="h-100 w-100 btn btn-success">'.$li['etat'].'</td>';
+								echo '<td><a href="gestion_pdo.php?id='.$li['id'].'&etat='.$li['etat'].'"><button class="h-100 w-100 btn btn-success">'.$li['etat'].'</td>';
 							}
         			        echo '</tr/>';
         			    }
         			?>
 				</table>
 			</div>
+			<hr class="my-4"><br><br><br><br><br><br><br>
 		</div>
-		<?php include "includes/piedpage.php"; ?>
+		</div>
+		<?php include "include/piedpage.inc.php"; ?>
