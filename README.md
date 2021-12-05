@@ -49,17 +49,17 @@
 
 ## SCD
 
->![Diagramme SCD.png](SCD.png)
+>![Diagramme SCD.png](images/readme/SCD.png)
 
 ## Diagramme de cas d'utilisation
 
->![Diagramme CasUtilisation.png](CasUtilisation.png)
+>![Diagramme CasUtilisation.png](images/readme/CasUtilisation.png)
 
 ## Apercu du site
 
 >### Page d'accueil :
 >>
->> ![Diagramme CasUtilisation.png](CasUtilisation.png)
+>> ![Page accueil.png](images/readme/screen1.png)
 >
 >### Page d'inscription :
 >> On est renvoyé sur cette page quand on clique sur un des boutons "S'incrire" sur le site.
