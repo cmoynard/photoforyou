@@ -56,9 +56,6 @@
             <li>
               <a href="#!" class="text-white">A Propos de moi</a>
             </li>
-            <li>
-              <a href="#!" class="text-white">Port-Folio</a>
-            </li>
           </ul>
         </div>
         <!--Grid column-->
