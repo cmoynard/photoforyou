@@ -21,7 +21,7 @@
 
 ## Exigences fonctionnelles
 
->### <ins>Principales composantes<ins>
+>### <ins>Principales composantes</ins>
 >>- Gestion des utilisateurs
 >>- Identification des utilisateurs
 >>- Gestion de l'espace client/photographe
@@ -29,14 +29,14 @@
 >>- Gestion de paiements
 >>- Gestion du catalogue
 >
->### Fonctionnalités en "front office"
+>### <ins>Fonctionnalités en "front office"</ins>
 >>- Identification
 >>- Gestion de l'espace photographe
 >>- Gestion de l'esapce client
 >>- Gestion des commandes
 >>- Catalogue des photos
 >
->### Fonctionnalités en "back-office"
+>### <ins>Fonctionnalités en "back-office"</ins>
 >>- Gestion des utilisateurs
 >>- Gestion du contenu informationnel
 >>- Gestion du catalogue
@@ -54,3 +54,17 @@
 ## Diagramme de cas d'utilisation
 
 >![Diagramme CasUtilisation.png](CasUtilisation.png)
+
+## Apercu du site
+
+>### Page d'accueil :
+>>
+>> ![Diagramme CasUtilisation.png](CasUtilisation.png)
+>
+>### Page d'inscription :
+>> On est renvoyé sur cette page quand on clique sur un des boutons "S'incrire" sur le site.
+>>
+>> photo
+>
+>### Page de connexion :
+>>
