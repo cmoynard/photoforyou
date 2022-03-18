@@ -4,10 +4,10 @@ include ('include/entete.inc.php');
 if (isset($_POST['insert'])) {
 
   //On récupère les variables.
-  $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_STRING);
-  $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_STRING);
-  $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-  $type = filter_input(INPUT_POST, 'choixType', FILTER_SANITIZE_STRING);
+  $nom = htmlspecialchars($_POST('nom'));
+  $prenom = htmlspecialchars($_POST('prenom'));
+  $email = htmlspecialchars($_POST('email'));
+  $type = htmlspecialchars($_POST('choixType'));
   $mdp1 = md5($_POST['mdp']);
   $mdpconf = md5($_POST['mdpconf']);
 
