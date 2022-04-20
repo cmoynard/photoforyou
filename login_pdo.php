@@ -2,7 +2,7 @@
 include ('include/entete.inc.php');
 
 if (isset($_POST['identifier']))
-{ //Preparation de la verification du banissement
+{ //préparation des requetes sql et bannissement
   $mail =  htmlentities($_POST['mail']);
   $motdepasse = md5($_POST['motdepasse']);
   $req_etat = "SELECT etat FROM photoforyou.users WHERE email = '$mail'";
@@ -11,7 +11,7 @@ if (isset($_POST['identifier']))
   $result_r_e = $r_e->fetch(\PDO::FETCH_OBJ);
   $etat =  $result_r_e->etat;
 
-  $requete = 'SELECT id from photoforyou.users where email = :mail and mdp = :motdepasse';
+  $requete = 'SELECT id from photoforyou.users where email = :mail and mdp = :motdepasse'; //préparation requete pour verification mail et mdp
   $instructions = $db->prepare($requete);
   $instructions->bindParam(':mail', $mail, PDO::PARAM_STR);
   $instructions->bindParam(':motdepasse', $motdepasse, PDO::PARAM_STR);
@@ -43,7 +43,7 @@ if (isset($_POST['identifier']))
     
   }
   else
-  {
+  {  //il n'y as pas de user, on le redirectionne vers la page de register
       echo '<script>
       alert("Vos mots de passe ne correspondent pas.");
       location.href="register.php";

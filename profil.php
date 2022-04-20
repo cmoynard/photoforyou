@@ -2,11 +2,11 @@
 	include ("include/entete.inc.php");
   if ($_SESSION['login']!=true OR $_SESSION['type']=='visiteur')
   {
-    header("Location:login.php");
+    header("Location:login.php"); //redirect si pas login
   }
   ?>
 	<div class="container">
-    	<div class="jumbotron">
+    	<div class="jumbotron"> <!-- Affichage du profil et rajout crédit -->
       		<h1 class="display-4">Votre profil de <?php echo $_SESSION['type'] ?></h1>
           <?php echo "<img src=".$_SESSION['photo']." id='photo'  width=15% class='img-responsive float-left' >" ?>
       		<?php echo '<p class="lead">Bonjour '.$_SESSION['nomUtilisateur'].' !</p>'?>
@@ -19,7 +19,7 @@
           <a href="rajcredit.php"><button type="button" class="btn btn-lg btn-outline-dark">Rajouter des crédits.</button></a>
           <hr class="my-4">
           <p class="lead">Photos acheté : </p>
-          <?php if (isset($_SESSION['photoAchat'])) 
+          <?php if (isset($_SESSION['photoAchat'])) //si une photo a été acheté, on l'affiche
           {
             echo "<img src=".$_SESSION['photoAchat']." id='photo'  width=12% class='img-responsive float-left' >" ;
             echo "<hr class='my-4'>";

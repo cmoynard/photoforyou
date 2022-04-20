@@ -2,11 +2,11 @@
 	include ("include/entete.inc.php");
   if ($_SESSION['login']!=true OR $_SESSION['type']=='visiteur')
   {
-    header("Location:login.php");
+    header("Location:login.php"); //Redirection si l'utilisateur n'est pas connecté
   }
 
   ?>
-	<div class="container">
+	<div class="container"> 
     <div class="jumbotron">
       <h1 class="display-4">Parcourir la galerie</h1>
       <?php echo '<p class="lead">Connecté en tant que '.$_SESSION['nomUtilisateur'].' '.$_SESSION['prenomUtilisateur'].'</p>'?>
@@ -18,20 +18,20 @@
   <div class="container">
   <div class="row row-cols-1 row-cols-md-3">
   <?php
-        $req= "SELECT * FROM photoforyou.galerie";
+        $req= "SELECT * FROM photoforyou.galerie"; //dans chaque colonne on rajoute un élement de la bdd
         $ins=$db->prepare($req);
         $ins->execute();
-        $num = $ins->fetchAll();
+        $num = $ins->fetchAll(); //on prépare la requete et on l'execute et on récupère toute les infos
 
     
         foreach ($num as $value) {
         $query = "SELECT * from photoforyou.galerie where idPhoto = ".$value['idPhoto'].";";
         $requete = $db->query($query);
         $result = $requete->fetch();
-        $galPhoto = "images/galerie/".htmlentities($result['nomPhoto']);
+        $galPhoto = "images/galerie/".htmlentities($result['nomPhoto']); //pour chaque élement dans le tableau, on récupre chaque info de la photo en fonction de son id et on recupère la photo dans le dossier d'image
 
-        echo "
-        <div class='col-sm-3 mb-3'>
+        echo //on génère la card de la photo, avec toute les infos de cette dernière dans la bdd
+        "<div class='col-sm-3 mb-3'>
           <form action='achat.php' method='POST'>
             <div class='card'>
               <input type='number' name='nbCredit' value=".$value['prixCard']." style='display: none;'/> 

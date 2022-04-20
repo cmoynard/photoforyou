@@ -1,11 +1,11 @@
 <?php
   session_start();
-  if (!isset($_SESSION['type']))
+  if (!isset($_SESSION['type'])) //On donne la session visiteur si on a pas de session en se connectant
   {
     $_SESSION['type']="visiteur";
   }
   require_once ('accessbase.php');
-  $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); //on donne l'accès à la base de donnéess et on active les erreurs
 ?>
 <!DOCTYPE html>
   <html lang="fr">
@@ -21,7 +21,7 @@
     <body>
 
     <?php
-    if ((!isset($_SESSION['login'])) OR ($_SESSION['type'])=='visiteur') {
+    if ((!isset($_SESSION['login'])) OR ($_SESSION['type'])=='visiteur') { //on donne les differents header en fonction de la session du client
       echo '
     <header class="p-3 bg-dark text-white">
         <div class="container">

@@ -2,7 +2,7 @@
 	include ("include/entete.inc.php");
 	if($_SESSION['login']!=true )
   {
-    header("Location:login.php");
+    header("Location:login.php"); //redirect si pas login
   }
   ?>
 	<div class="container">

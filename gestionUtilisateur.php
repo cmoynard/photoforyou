@@ -5,7 +5,7 @@ if(!isset($_SESSION['login'])){
     header('location:index.php');
     exit();
 }
-if($_SESSION['type'] != 'admin'){
+if($_SESSION['type'] != 'admin'){ //on verifie que la session admin est en cours, sinon redirection
 	header('location:index.php');
 	exit();
 }
@@ -26,7 +26,7 @@ if($_SESSION['type'] != 'admin'){
 						<td>Etat</td>
 					</tr>
 					<?php
-        			    $req = $db->query("SELECT * FROM photoforyou.users WHERE type != 'admin'");
+        			    $req = $db->query("SELECT * FROM photoforyou.users WHERE type != 'admin'"); // tableau qui affiche tout les utilisateur du site (saufs admins)
         			    $data = $req->fetchAll();
         			    echo '';
         			    foreach ($data as $li){
@@ -37,7 +37,6 @@ if($_SESSION['type'] != 'admin'){
         			        echo '<td>'.$li['email'].'</td>';
         			        echo '<td>'.$li['type'].'</td>';
         			        echo '<td>'.$li['credit'].'</td>';
-								// * Affichage en fonction l'état, et renvoit vers modif-etat-user.php avec $_GET['id'] && $_GET['etat']
           				
 							if($li['etat'] == 'banni'){
 								echo '<td><a href="gestion_pdo.php?id='.$li['id'].'&etat='.$li['etat'].'"><button class="h-100 w-100 btn btn-danger">'.$li['etat'].'</td>';
@@ -45,7 +44,7 @@ if($_SESSION['type'] != 'admin'){
 						
 							if($li['etat'] == 'valid'){
 								echo '<td><a href="gestion_pdo.php?id='.$li['id'].'&etat='.$li['etat'].'"><button class="h-100 w-100 btn btn-success">'.$li['etat'].'</td>';
-							}
+							} //bouton qui affiche l'état de l'utilisateur et qui le change quand cliqué (gestion_pdo.php)
         			        echo '</tr/>';
         			    }
         			?>
@@ -54,4 +53,6 @@ if($_SESSION['type'] != 'admin'){
 			<hr class="my-4"><br><br><br><br><br><br><br>
 		</div>
 		</div>
+
+    
 		<?php include "include/piedpage.inc.php"; ?>

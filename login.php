@@ -2,7 +2,7 @@
 include ('include/entete.inc.php')
 ?>
 
-  <section class="vh-100 bg-image">
+  <section class="vh-100 bg-image">  <!-- formulaire de login avec données bbd et verification -->
     <div class="mask d-flex align-items-center h-100 gradient-custom-3">
       <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -58,26 +58,26 @@ include ('include/entete.inc.php')
   </section>
 
   <script>
-  var mail=document.getElementById("email");
+  var mail=document.getElementById("email"); //javascript pour la verification des mails
 mail.addEventListener("blur", function (evt) {
   console.log("Perte de focus pour le mail");
 });
 
-var motDePasse=document.getElementById("motdepasse");
+var motDePasse=document.getElementById("motdepasse"); //js pour la verif des mdp
 motDePasse.addEventListener("blur", function (evt) {
   console.log("Perte de focus pour le mdp");
 });
 
-(function() {
+(function() { //fonction pour affichage dynamique des erreur sur le formulaires
   "use strict"
   window.addEventListener("load", function() {
     var form = document.getElementById("form")
     form.addEventListener("submit", function(event) {
       if (form.checkValidity() == false) {
         event.preventDefault()
-        event.stopPropagation()
+        event.stopPropagation() //la ligne nest pas validé, elle devient rouge
       }
-      form.classList.add("was-validated")
+      form.classList.add("was-validated") //la ligne est validé dnas le formulaire (cest vert)
     }, false)
   }, false)
 

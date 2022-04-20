@@ -1,6 +1,6 @@
 <?php
 include ('include/entete.inc.php') ?>
-<div class="container">
+<div class="container">   <!-- Page de rajout de crédits -->
   <div class="py-5 text-center">
   	<h1 class="display-5">Rajouter des crédits</h1>
     <hr class="my-4">
@@ -23,7 +23,7 @@ include ('include/entete.inc.php') ?>
 
 <script>
 var Credit=document.getElementById("cred");
-Credit.addEventListener("blur", function (evt) {
+Credit.addEventListener("blur", function (evt) {  //verification des crédits, erreur js sinon
   validationMotDePasse();
 });
 
@@ -34,9 +34,9 @@ Credit.addEventListener("blur", function (evt) {
     form.addEventListener("submit", function(event) {
       if (form.checkValidity() == false) {
         event.preventDefault()
-        event.stopPropagation()
+        event.stopPropagation() //erreur dans le champ, rouge
       }
-      form.classList.add("was-validated")
+      form.classList.add("was-validated") //champ validé, vert
     }, false)
   }, false)
 

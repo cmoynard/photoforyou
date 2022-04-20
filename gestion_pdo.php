@@ -5,13 +5,13 @@ if(empty($_SESSION['type'])){
     header('location:index.php');
     exit();
 }
-if($_SESSION['type'] != 'admin'){
+if($_SESSION['type'] != 'admin'){ //double vérification, redirection si on est pas admin ou si pas de session
     header('location:index.php');
     exit();
 }else{
     
         if (isset($_GET["id"])) {
-            if (isset($_GET["etat"])) {
+            if (isset($_GET["etat"])) { //on vérifie que l'utilisateur a bien toute les données
     
                 $id = $_GET["id"];
                 $etat = $_GET["etat"];
