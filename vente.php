@@ -84,12 +84,13 @@ if (isset($_POST['vendre']))
     </script>'; 
   }
 
-    $instruction = $db->prepare("INSERT INTO photoforyou.galerie (nomPhoto, nomCard, descCard, prixCard)
-    VALUES  (:nomPhoto, :nomCard, :descCard, :prixCard)");
+    $instruction = $db->prepare("INSERT INTO photoforyou.galerie (nomPhoto, nomCard, descCard, prixCard, id_vendeur)
+    VALUES  (:nomPhoto, :nomCard, :descCard, :prixCard, :id_vendeur)");
     $instruction->bindParam(':nomPhoto', $nom_fichier, PDO::PARAM_STR);
     $instruction->bindParam(':nomCard', $nomP, PDO::PARAM_STR);
     $instruction->bindParam(':descCard', $descP, PDO::PARAM_STR);
     $instruction->bindParam(':prixCard', $prixP, PDO::PARAM_INT);
+    $instruction->bindParam(':id_vendeur', $_SESSION['idUtilisateur'], PDO::PARAM_INT);
 
     try {
       $instruction->execute();

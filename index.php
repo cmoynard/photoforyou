@@ -17,7 +17,13 @@
           elseif ($_SESSION['login']=true AND $_SESSION['type']=='photographe') { //boutons pour le photographe
             echo '<a href="galerie.php"><button type="button" class="btn btn-lg btn-outline-dark">Acheter des photos</button></a> <a href="vente.php"><button type="button" class="btn btn-lg btn-outline-dark">Publier des photos</button></a>
                 <hr class="my-4">';
-          } else {  //rien si on est pas login
+
+          } elseif ($_SESSION['login']=true AND $_SESSION['type']=='admin') {
+            echo '<h1>Vous êtes bien connecté en tant qu\'admin !</h1>
+                <hr class="my-4">';
+          }
+          
+          else {  //rien si on est pas login
             echo '<h1>Vous n\'êtes pas connecté !</h1>
                 <hr class="my-4">';
           }

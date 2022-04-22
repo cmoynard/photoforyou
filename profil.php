@@ -19,11 +19,20 @@
           <a href="rajcredit.php"><button type="button" class="btn btn-lg btn-outline-dark">Rajouter des crédits.</button></a>
           <hr class="my-4">
           <p class="lead">Photos acheté : </p>
-          <?php if (isset($_SESSION['photoAchat'])) //si une photo a été acheté, on l'affiche
-          {
-            echo "<img src=".$_SESSION['photoAchat']." id='photo'  width=12% class='img-responsive float-left' >" ;
-            echo "<hr class='my-4'>";
-          } ?>
+          <div class="row row-cols-6">
+            
+          <?php
+              $query = "SELECT * from photoforyou.galerie where id_acheteur = ".$_SESSION['idUtilisateur'].";";
+              $requete = $db->query($query);
+              $result = $requete->fetchAll();
+              foreach ($result as $ligne) {
+                echo '<div class="col">';
+                echo "<img src='images/galerie/".htmlentities($ligne['nomPhoto'])."' id='photo' class='img-responsive float-left h-100 w-100' >" ;
+                echo '</div>';
+            } ?>
+          </div>
+          <hr class='my-4'>
+            
           <a href="supprUser.php"><button type="button" class="btn btn-lg btn-outline-danger mb-2">! Supprimer votre compte !</button></a>
           <hr class="my-4">
     </div>

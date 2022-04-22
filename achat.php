@@ -21,6 +21,12 @@ if (isset($_POST['acheter']))
       $instruction = $db->prepare("UPDATE users SET credit = credit - :credit WHERE id = ".$_SESSION['idUtilisateur'].";");
       $instruction->bindParam(':credit', $creditAchat, PDO::PARAM_INT);
       $instruction->execute();
+
+      $instruction = $db->prepare("UPDATE galerie SET id_acheteur = :id_acheteur WHERE idPhoto = :idAchat;");
+      $instruction->bindParam(':id_acheteur', $_SESSION['idUtilisateur'], PDO::PARAM_INT);
+      $instruction->bindParam(':idAchat', $idAchat, PDO::PARAM_INT);
+      $instruction->execute();
+      
       $query = "SELECT * from photoforyou.users where id = ".$_SESSION['idUtilisateur'].";";
       $requete = $db->query($query);
       $result = $requete->fetch();

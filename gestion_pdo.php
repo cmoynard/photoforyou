@@ -1,5 +1,5 @@
 <?php
-include 'include/entete.inc.php';
+include 'include/entete_gestuser.inc.php';
 
 if(empty($_SESSION['type'])){
     header('location:index.php');

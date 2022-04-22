@@ -4,7 +4,7 @@
   {
     $_SESSION['type']="visiteur";
   }
-  require_once ('include/accessbase.php');
+  require_once ('include/access_gestuser.php');
   $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); //on donne l'accès à la base de donnéess et on active les erreurs
 ?>
 <!DOCTYPE html>

@@ -18,35 +18,30 @@
   <div class="container">
   <div class="row row-cols-1 row-cols-md-3">
   <?php
-        $req= "SELECT * FROM photoforyou.galerie"; //dans chaque colonne on rajoute un élement de la bdd
-        $ins=$db->prepare($req);
-        $ins->execute();
-        $num = $ins->fetchAll(); //on prépare la requete et on l'execute et on récupère toute les infos
-
-    
-        foreach ($num as $value) {
-        $query = "SELECT * from photoforyou.galerie where idPhoto = ".$value['idPhoto'].";";
+        $query = "SELECT * from photoforyou.galerie where id_acheteur IS NULL;";
         $requete = $db->query($query);
-        $result = $requete->fetch();
-        $galPhoto = "images/galerie/".htmlentities($result['nomPhoto']); //pour chaque élement dans le tableau, on récupre chaque info de la photo en fonction de son id et on recupère la photo dans le dossier d'image
+        $result = $requete->fetchAll();
+        foreach ($result as $ligne) {
+          $galPhoto = "images/galerie/".htmlentities($ligne['nomPhoto']); //pour chaque élement dans le tableau, on récupre chaque info de la photo en fonction de son id et on recupère la photo dans le dossier d'image
+            
+          echo //on génère la card de la photo, avec toute les infos de cette dernière dans la bdd
+            "<div class='col-sm-3 mb-3'>
+              <form action='achat.php' method='POST'>
+                <div class='card'>
+                  <input type='number' name='nbCredit' value=".$ligne['prixCard']." style='display: none;'/> 
+                  <input type='hidden' name='idAchat' value='".$ligne['idPhoto']." ?>' />
+                  <img src=".$galPhoto." class='card-img-top' alt='".$ligne['idPhoto']."'/>
+                  <div class='card-body'>
+                    <h5 class='card-title'>".$ligne['nomCard']."</h5>
+                    <p class='card-text'>
+                      ".$ligne['descCard']."
+                    </p>
+                    <button type='submit' value='acheter' name='acheter' class='btn btn-success'>Acheter pour ".$ligne['prixCard']." crédits</button>
+                  </div>
+                </div>
+              </form>
+            </div>";
 
-        echo //on génère la card de la photo, avec toute les infos de cette dernière dans la bdd
-        "<div class='col-sm-3 mb-3'>
-          <form action='achat.php' method='POST'>
-            <div class='card'>
-              <input type='number' name='nbCredit' value=".$value['prixCard']." style='display: none;'/> 
-              <input type='hidden' name='idAchat' value='".$value['idPhoto']." ?>' />
-              <img src=".$galPhoto." class='card-img-top' alt='".$value['idPhoto']."'/>
-              <div class='card-body'>
-                <h5 class='card-title'>".$value['nomCard']."</h5>
-                <p class='card-text'>
-                  ".$value['descCard']."
-                </p>
-                <button type='submit' value='acheter' name='acheter' class='btn btn-success'>Acheter pour ".$value['prixCard']." crédits</button>
-              </div>
-            </div>
-          </form>
-        </div>";
         } ?>
 
   </div>
