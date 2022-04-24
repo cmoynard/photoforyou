@@ -32,6 +32,15 @@ if($_SESSION['type'] != 'admin'){ //double vérification, redirection si on est 
 
                 if ($etat == 'suppr') {
                     
+                    $requete = 'SELECT nomPhoto FROM  photoforyou.galerie where id_vendeur = :id';
+                    $instruction = $db->prepare($requete);
+                    $instruction->bindParam(':id', $id, PDO::PARAM_STR);
+                    $instruction->execute();
+                    $result = $instruction->fetchAll();
+                    foreach ($result as $ligne) {
+                        unlink("images/galerie/".($ligne['nomPhoto']));
+                    }
+
                     $req = $db->prepare("DELETE FROM photoforyou.galerie WHERE id_vendeur = :id");
                     $req->bindValue(':id', $id, PDO::PARAM_INT);
                     $req->execute();

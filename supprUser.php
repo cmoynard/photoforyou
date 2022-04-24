@@ -45,10 +45,20 @@ if (isset($_POST['identifier']))
   
   if ($motdepasse == $result['mdp']) { // Si le mot de passe est bon
     if ($_SESSION['type'] == 'photographe') {
-    $requete = 'DELETE FROM  photoforyou.galerie where id_vendeur = :id';
-    $instruction = $db->prepare($requete);
-    $instruction->bindParam(':id', $id, PDO::PARAM_STR);
-    $instruction->execute();
+    
+      $requete = 'SELECT nomPhoto FROM  photoforyou.galerie where id_vendeur = :id';
+      $instruction = $db->prepare($requete);
+      $instruction->bindParam(':id', $id, PDO::PARAM_STR);
+      $instruction->execute();
+      $result = $instruction->fetchAll();
+      foreach ($result as $ligne) {
+        unlink("images/galerie/".($ligne['nomPhoto']));
+      }
+
+      $requete = 'DELETE FROM  photoforyou.galerie where id_vendeur = :id';
+      $instruction = $db->prepare($requete);
+      $instruction->bindParam(':id', $id, PDO::PARAM_STR);
+      $instruction->execute();
     }
     $requete = 'DELETE FROM  photoforyou.users where id = :id and mdp = :motDePasse';
     $instruction = $db->prepare($requete);
