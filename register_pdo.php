@@ -4,10 +4,10 @@ include ('include/entete.inc.php');
 if (isset($_POST['insert'])) {
 
   //On récupère les variables.
-  $nom = htmlspecialchars($_POST('nom'));
-  $prenom = htmlspecialchars($_POST('prenom'));
-  $email = htmlspecialchars($_POST('email'));
-  $type = htmlspecialchars($_POST('choixType'));
+  $nom = htmlspecialchars($_POST['nom']);
+  $prenom = htmlspecialchars($_POST['prenom']);
+  $email = htmlspecialchars($_POST['email']);
+  $type = htmlspecialchars($_POST['choixType']);
   $mdp1 = md5($_POST['mdp']);
   $mdpconf = md5($_POST['mdpconf']);
 
@@ -46,7 +46,7 @@ if (isset($_POST['insert'])) {
     } catch(PDOException $e) {
       echo "<h1>Erreur : </h1>" . $e->getMessage();
       var_dump($_POST);
-      echo $nom_fichier;
+      var_dump($nom_fichier);
       echo $urlPhoto;
     }
 

@@ -24,6 +24,7 @@ if($_SESSION['type'] != 'admin'){ //on verifie que la session admin est en cours
 						<td>Grade</td>
 						<td>Credits</td>
 						<td>Etat</td>
+						<td>Supprimer</td>
 					</tr>
 					<?php
         			    $req = $db->query("SELECT * FROM photoforyou.users WHERE type != 'admin'"); // tableau qui affiche tout les utilisateur du site (saufs admins)
@@ -40,10 +41,12 @@ if($_SESSION['type'] != 'admin'){ //on verifie que la session admin est en cours
           				
 							if($li['etat'] == 'banni'){
 								echo '<td><a href="gestion_pdo.php?id='.$li['id'].'&etat='.$li['etat'].'"><button class="h-100 w-100 btn btn-danger">'.$li['etat'].'</td>';
+								echo '<td><a href="gestion_pdo.php?id='.$li['id'].'&etat=suppr" class="h-100 w-100 btn btn-outline-danger">Supprimer</a></td>';
 							}
 						
 							if($li['etat'] == 'valid'){
 								echo '<td><a href="gestion_pdo.php?id='.$li['id'].'&etat='.$li['etat'].'"><button class="h-100 w-100 btn btn-success">'.$li['etat'].'</td>';
+								echo '<td><a class="h-100 w-100 btn btn-outline-secondary disabled">Supprimer</a></td>';
 							} //bouton qui affiche l'état de l'utilisateur et qui le change quand cliqué (gestion_pdo.php)
         			        echo '</tr/>';
         			    }

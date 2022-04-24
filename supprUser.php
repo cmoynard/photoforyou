@@ -15,12 +15,6 @@ if($_SESSION['login']!=true)
   <form method="post" id="form" novalidate>
     <div class="form-group row">
       <div class="col-md-4 mb-3">
-        <label for="email">Email : </label>
-        <input type="text" class= "form-control" name="mail" id="email" required>
-      </div>
-    </div>
-    <div class="form-group row">
-      <div class="col-md-4 mb-3">
         <label for="motdepasse">Mot de passe :</label>
         <input type="password" class="form-control" id="motdepasse" name="motdepasse" required>
         <div class="invalid-feedback">
@@ -38,24 +32,41 @@ if($_SESSION['login']!=true)
 <?php
 if (isset($_POST['identifier']))
 {
-  $mail =  htmlentities($_POST['mail']);
+  var_dump($_SESSION);
+  $id = $_SESSION['idUtilisateur'];
   $motdepasse = md5($_POST['motdepasse']);
-  $requete = 'DELETE  FROM  photoforyou.users where email = :mail and mdp = :motDePasse';
+
+  // On vérifie que le mot de passe est bon
+  $requete = 'SELECT mdp FROM photoforyou.users where id = :id';
   $instruction = $db->prepare($requete);
-  $instruction->bindParam(':mail', $mail, PDO::PARAM_STR);
-  $instruction->bindParam(':motDePasse', $motdepasse, PDO::PARAM_STR);
-  try
-  {
+  $instruction->bindParam(':id', $id, PDO::PARAM_STR);
+  $instruction->execute();
+  $result = $instruction->fetch();
+  
+  if ($motdepasse == $result['mdp']) { // Si le mot de passe est bon
+    if ($_SESSION['type'] == 'photographe') {
+    $requete = 'DELETE FROM  photoforyou.galerie where id_vendeur = :id';
+    $instruction = $db->prepare($requete);
+    $instruction->bindParam(':id', $id, PDO::PARAM_STR);
     $instruction->execute();
-    session_destroy();
-    echo '<script>
-    alert("Votre compte à été supprimé définitivement.");
-    location.href="register.php";
-    </script>'; 
-  }
-  catch(PDOException $e) {
-    echo "<h1>Erreur : </h1>" . $e->getMessage();
-    var_dump($_POST); 
+    }
+    $requete = 'DELETE FROM  photoforyou.users where id = :id and mdp = :motDePasse';
+    $instruction = $db->prepare($requete);
+    $instruction->bindParam(':id', $id, PDO::PARAM_STR);
+    $instruction->bindParam(':motDePasse', $motdepasse, PDO::PARAM_STR);
+    try
+    {
+      $instruction->execute();
+      session_destroy();
+      echo '<script>
+      alert("Votre compte à été supprimé définitivement.");
+      location.href="register.php";
+      </script>'; 
+    }
+    catch(PDOException $e) {
+      echo "<h1>Erreur : </h1>" . $e->getMessage();
+      var_dump($_POST); 
+    }
   }
 }
 ?>
