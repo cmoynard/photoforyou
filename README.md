@@ -87,12 +87,12 @@
 >>![Page vente.png](images/readme/screen5.png)
 >
 >## Profil utilisateur
->>Page où l'on peut consulter les informations de son compte, son type de compte, son solde de crédits et en rajouter, voir la photo acheté sur son compte et supprimer son compte définitivement.
+>>Page où l'on peut consulter les informations de son compte, son type de compte, son solde de crédits et en rajouter, voir ses photo acheté pour les clients / voir ses photos actuellement en vente et celles déjà vendus sur son compte et supprimer son compte définitivement.
 >>
 >>![Page profil.png](images/readme/screen6.png)
 >
 >## Gestion des utilisateurs
->>Page spécial uniquement accèssible par l'administrateur du site. On peut voir les informations des personnes inscrits sur le site et on peut les bannir du site, ce qui les empêche de se connecter, jusqu'à ce qu'un débanissement soit effectuer.
+>>Page spécial uniquement accèssible par l'administrateur du site. On peut voir les informations des personnes inscrits sur le site et on peut les bannir du site, ce qui les empêche de se connecter, jusqu'à ce qu'un débanissement soit effectuer. Après un bannissement, possibilité de supprimer directement le compte depuis cette interface, ce qui enlève toutes les photos postés sur le catalogue, si le compte supprimé est un photographe
 >>
 >>![Page gestion.png](images/readme/screen7.png)
 
@@ -101,8 +101,18 @@
 # Changement à prévoir
 >- Créditer le photographe qui a posté la photo quand cette dernière est acheté.
 >- Filtre sur les photos pour empêcher le vole
->- Possibilité de voir plusieurs images achetés sur le profil et un bouton pour les télécharger en résolution native
->- gesstion des inscription des comptes photographe par un admin
->- barre de recherche dans l'onglet acheter, pour retrouver une image plus facilement
+>- Gestion des inscription des comptes photographe par un admin
 >- Système de catégorie pour ranger les images
 >- Description détaillé de l'image avant l'achat (celui qui la vend, date de la publication, etc)
+
+# Annexe
+>
+>## Documentation technique du projet :
+>>
+>> [Documentation Technique PhotoForYou](SCD.png)
+>>
+>
+>## Fichier de la base de données SQL
+>>
+>> [SQL PhotoForYou](photoforyou.sql)
+>> 
