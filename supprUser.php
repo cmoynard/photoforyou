@@ -89,7 +89,7 @@ mail.addEventListener("blur", function (evt) {
 
 var motDePasse=document.getElementById("motdepasse");
 motDePasse.addEventListener("blur", function (evt) {
-  validationMotDePasse();
+  validationMotDePasse(); 
 });
 
 (function() {
