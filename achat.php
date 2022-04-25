@@ -21,12 +21,12 @@ if (isset($_POST['acheter']))
       $instruction = $db->prepare("UPDATE galerie SET id_acheteur = :id_acheteur WHERE idPhoto = :idAchat;");
       $instruction->bindParam(':id_acheteur', $_SESSION['idUtilisateur'], PDO::PARAM_INT);
       $instruction->bindParam(':idAchat', $idAchat, PDO::PARAM_INT);
-      $instruction->execute();
+      $instruction->execute(); //on met a jour la photo achetés en bdd pour l'enlever de la galerie et l'afficher sur le profil
       
       $query = "SELECT * from photoforyou.users where id = ".$_SESSION['idUtilisateur'].";";
       $requete = $db->query($query);
       $result = $requete->fetch();
-      $_SESSION['credit'] = htmlentities($result['credit']);
+      $_SESSION['credit'] = htmlentities($result['credit']); //on met à jour le nombre de crédits de l'utilisateur
       unset($result);
       echo '<script>
       alert("Votre achat a été effectué !");
