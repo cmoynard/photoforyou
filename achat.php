@@ -12,12 +12,8 @@ if (isset($_POST['acheter']))
   $num = $instructions->fetchAll();
   try {
     if ($_SESSION['credit']>= $creditAchat AND count($num)>0)
-    {
-      $query = "SELECT * from photoforyou.galerie where idPhoto = '$idAchat';";
-      $requete = $db->query($query);
-      $result = $requete->fetch();
-      $_SESSION['photoAchat'] ="images/galerie/".htmlentities($result['nomPhoto']);
-      unset($result);
+    { //on vérifie que l'utilisateur a bien toute les données
+
       $instruction = $db->prepare("UPDATE users SET credit = credit - :credit WHERE id = ".$_SESSION['idUtilisateur'].";");
       $instruction->bindParam(':credit', $creditAchat, PDO::PARAM_INT);
       $instruction->execute();

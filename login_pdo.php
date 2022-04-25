@@ -17,7 +17,7 @@ if (isset($_POST['identifier']))
   $instructions->bindParam(':motdepasse', $motdepasse, PDO::PARAM_STR);
   $instructions->execute();
   $num = $instructions->fetchAll();
-  try {
+  try { //on vérifie que l'utilisateur a bien toute les données
     if($etat == 'banni'){ //Verification du banissement
       echo '<script>
       alert("!! VOUS ETES BANNI !!");
@@ -34,9 +34,9 @@ if (isset($_POST['identifier']))
       $_SESSION['idUtilisateur'] = htmlentities($result['id']);
       $_SESSION['prenomUtilisateur'] = htmlentities($result['prenom']);
       $_SESSION['nomUtilisateur'] = htmlentities($result['nom']);
-      $_SESSION['emailUtilisateur'] = htmlentities($result['email']);
+      $_SESSION['emailUtilisateur'] = htmlentities($result['email']); 
       $_SESSION['credit'] = htmlentities($result['credit']);
-      $_SESSION['photo'] = "images/".htmlentities($result['photo']);
+      $_SESSION['photo'] = "images/".htmlentities($result['photo']); 
       $_SESSION['type'] = htmlentities ($result['type']);
       unset($result);
       header('Location: membre.php');
@@ -49,7 +49,7 @@ if (isset($_POST['identifier']))
       location.href="register.php";
       </script>';
     }
-  } catch (PDOException $e) {
+  } catch (PDOException $e) { //si erreur on affiche le message d'erreur
     echo "<h1>Erreur : </h1>" . $e->getMessage();
     var_dump($_POST);
     echo $motdepasse;

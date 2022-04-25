@@ -142,69 +142,69 @@ include ('include/entete.inc.php')
 
 
 <script>
-     function actuPhoto(element)
-{
-  var image=document.getElementById("photoUser");
-  var fReader = new FileReader();
-  fReader.readAsDataURL(image.files[0]);
-  fReader.onloadend = function(event)
-  {
-    var img = document.getElementById("photo");
-    img.src = event.target.result;
-  }
-}
-
-aff_cach_input('client');
-
-function aff_cach_input(action)
-{ 
-  if (action == "photographe") 
-  {
-      document.getElementById('blockPhotographe').style.display="inline"; 
-      document.getElementById('blockClient').style.display="none"; 
-  }
-  else if (action == "client")
-  {
-      document.getElementById('blockPhotographe').style.display="none"; 
-      document.getElementById('blockClient').style.display="inline"; 
-  }
-  return true;
-}
-
-function validationMotDePasse() {
-    $mdp=document.getElementById("mdp").value;
-    console.log($motDePasse1);
-    $mdpconf=document.getElementById("mdpconf").value;
-    if ($mdp != $mdpconf)
-    {
-      document.getElementById("erreurMotDePasse").value="Erreur";
-    }
-}
-
-var mail=document.getElementById("email");
-mail.addEventListener("blur", function (evt) {
-  console.log("Perte de focus pour le mail");
-});
-
-var motDePasse=document.getElementById("mdpconf");
-motDePasse.addEventListener("blur", function (evt) {
-  validationMotDePasse();
-});
-
-(function() {
-  "use strict"
-  window.addEventListener("load", function() {
-    var form = document.getElementById("form")
-    form.addEventListener("submit", function(event) {
-      if (form.checkValidity() == false) {
-        event.preventDefault()
-        event.stopPropagation()
+     function actuPhoto(element) // Fonction qui permet d'afficher l'image uploadée  
+      {
+        var image=document.getElementById("photoUser");
+        var fReader = new FileReader();
+        fReader.readAsDataURL(image.files[0]);
+        fReader.onloadend = function(event)
+        {
+          var img = document.getElementById("photo");
+          img.src = event.target.result;
+        }
       }
-      form.classList.add("was-validated")
-    }, false)
-  }, false)
 
-}())
+    aff_cach_input('client');
+
+    function aff_cach_input(action) // Fonction qui permet d'afficher ou cacher les champs de saisie pour le client
+    { 
+      if (action == "photographe") //Si le choix est photographe
+      {
+          document.getElementById('blockPhotographe').style.display="inline"; 
+          document.getElementById('blockClient').style.display="none"; 
+      }
+      else if (action == "client") //Si le choix est client
+      {
+          document.getElementById('blockPhotographe').style.display="none"; 
+          document.getElementById('blockClient').style.display="inline"; 
+      }
+      return true;
+    }
+
+    function validationMotDePasse() { // Fonction qui permet de vérifier que les mots de passe sont identiques
+        $mdp=document.getElementById("mdp").value;
+        console.log($motDePasse1);
+        $mdpconf=document.getElementById("mdpconf").value;
+        if ($mdp != $mdpconf)
+        {
+          document.getElementById("erreurMotDePasse").value="Erreur";
+        }
+    }
+
+    var mail=document.getElementById("email");
+    mail.addEventListener("blur", function (evt) {
+      console.log("Perte de focus pour le mail"); // On vérifie que le mail est valide
+    });
+
+    var motDePasse=document.getElementById("mdpconf");
+    motDePasse.addEventListener("blur", function (evt) {
+      validationMotDePasse(); // On vérifie que les mots de passe sont identiques
+    });
+
+    (function() {
+      "use strict"
+      window.addEventListener("load", function() {
+        var form = document.getElementById("form")
+        form.addEventListener("submit", function(event) {
+          if (form.checkValidity() == false) { // On vérifie que les champs sont valides
+            event.preventDefault()
+            event.stopPropagation() // On empêche le comportement par défaut du navigateur, c-à-d de soumettre le formulaire
+          }
+          form.classList.add("was-validated") // On ajoute la classe was-validated pour que le formulaire soit valide
+        }, false)
+      }, false)
+
+    }())
 </script>
 
 <?php

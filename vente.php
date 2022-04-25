@@ -69,7 +69,7 @@ if (isset($_POST['vendre']))
   $descP =  htmlentities($_POST['descP']);
   $prixP =  htmlentities($_POST['prixP']);
 
-  if (isset($_FILES))
+  if (isset($_FILES)) //Si on détecte une photo
   {
     $urlPhoto = $_FILES['srcP'];
     $nom_fichier = $urlPhoto["name"];
@@ -77,7 +77,7 @@ if (isset($_POST['vendre']))
     {
       $nom_fichier="user.png";
     }
-  } else {
+  } else { //Si on ne détecte pas de photo
     echo '<script>
     alert("Photo ne marche pas.");
     location.href="vente.php";
@@ -92,14 +92,14 @@ if (isset($_POST['vendre']))
     $instruction->bindParam(':prixCard', $prixP, PDO::PARAM_INT);
     $instruction->bindParam(':id_vendeur', $_SESSION['idUtilisateur'], PDO::PARAM_INT);
 
-    try {
-      $instruction->execute();
-      move_uploaded_file($urlPhoto['tmp_name'],'images/galerie/'.$nom_fichier);
+    try { //On essaie d'exécuter la requête
+      $instruction->execute(); 
+      move_uploaded_file($urlPhoto['tmp_name'],'images/galerie/'.$nom_fichier); //On déplace la photo dans le dossier images/galerie
       echo '<script>
       alert("Votre photo vient d\'être publié !");
       location.href="galerie.php";
       </script>';
-    } catch(PDOException $e) {
+    } catch(PDOException $e) {  //Si il y a une erreur
       echo "<h1>Erreur : </h1>" . $e->getMessage();
       var_dump($_POST);
       echo $nom_fichier;
@@ -109,52 +109,52 @@ if (isset($_POST['vendre']))
 ?>
 
 <script>
-function actuPhoto(element)
-{
-  var image=document.getElementById("srcP");
-  var fReader = new FileReader();
-  fReader.readAsDataURL(image.files[0]);
-  fReader.onloadend = function(event)
+function actuPhoto(element) //Fonction qui permet de changer l'image affichée dans le formulaire
   {
-    var img = document.getElementById("photo");
-    img.src = event.target.result;
+    var image=document.getElementById("srcP");
+    var fReader = new FileReader();
+    fReader.readAsDataURL(image.files[0]);
+    fReader.onloadend = function(event)
+    {
+      var img = document.getElementById("photo");
+      img.src = event.target.result;
+    }
   }
-}
 
-var nom=document.getElementById("nomP");
-nom.addEventListener("blur", function (evt) {
-  console.log("Perte de focus pour le Nom");
-});
+  var nom=document.getElementById("nomP");
+  nom.addEventListener("blur", function (evt) {
+    console.log("Perte de focus pour le Nom"); //On affiche dans la console quand on perd le focus
+  });
 
-var desc=document.getElementById("descP");
-desc.addEventListener("blur", function (evt) {
-  console.log("Perte de focus pour la description");
-});
+  var desc=document.getElementById("descP");
+  desc.addEventListener("blur", function (evt) {
+    console.log("Perte de focus pour la description"); //On affiche dans la console quand on perd le focus
+  });
 
-var prix=document.getElementById("prixP");
-prix.addEventListener("blur", function (evt) {
-  console.log("Perte de focus pour le prix");
-});
+  var prix=document.getElementById("prixP");
+  prix.addEventListener("blur", function (evt) {
+    console.log("Perte de focus pour le prix");   //On affiche dans la console quand on perd le focus
+  });
 
-var srcP=document.getElementById("srcP");
-srcP.addEventListener("blur", function (evt) {
-  console.log("Perte de focus pour la source img");
-});
+  var srcP=document.getElementById("srcP");
+  srcP.addEventListener("blur", function (evt) {
+    console.log("Perte de focus pour la source img");  //On affiche dans la console quand on perd le focus
+  });
 
-(function() {
-  "use strict"
-  window.addEventListener("load", function() {
-    var form = document.getElementById("form")
-    form.addEventListener("submit", function(event) {
-      if (form.checkValidity() == false) {
-        event.preventDefault()
-        event.stopPropagation()
-      }
-      form.classList.add("was-validated")
+  (function() { 
+    "use strict"
+    window.addEventListener("load", function() { 
+      var form = document.getElementById("form")
+      form.addEventListener("submit", function(event) {
+        if (form.checkValidity() == false) { //Si le formulaire n'est pas valide
+          event.preventDefault()
+          event.stopPropagation()
+        }
+        form.classList.add("was-validated") //On ajoute la classe was-validated pour que le formulaire soit valide
+      }, false)
     }, false)
-  }, false)
 
-}())
+  }())
 </script>
 
 <?php

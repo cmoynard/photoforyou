@@ -18,37 +18,37 @@
           <hr class="my-4">
           <a href="rajcredit.php"><button type="button" class="btn btn-lg btn-outline-dark">Rajouter des crédits.</button></a>
           <?php
-            if ($_SESSION['type'] == 'photographe') {
+            if ($_SESSION['type'] == 'photographe') { 
             
               $query = "SELECT * from photoforyou.galerie where id_vendeur = ".$_SESSION['idUtilisateur'].";";
               $requete = $db->query($query);
               $result = $requete->fetchAll();
               $photos_vendus = [];
 
-              if (!empty($result)) {
+              if (!empty($result)) { //si le photographe a des photos en vente
                 echo '<hr class="my-4">';
                 echo '<p class="lead">Photos en vente : </p>';
                 echo '<div class="row row-cols-6">';
 
-                foreach ($result as $ligne) {
-                  if ($ligne['id_acheteur'] == NULL) {
+                foreach ($result as $ligne) {  //pour chaque photo mise en vente par le photographe
+                  if ($ligne['id_acheteur'] == NULL) { 
                     echo '<div class="col">';
-                    echo "<img src='images/galerie/".htmlentities($ligne['nomPhoto'])."' id='photo' class='img-responsive float-left h-100 w-100' >" ;
-                    echo '</div>';
+                    echo "<img src='images/galerie/".htmlentities($ligne['nomPhoto'])."' id='photo' class='img-responsive float-left h-100 w-100' >" ; //affichage de la photo
+                    echo '</div>'; 
                   } else {
-                    array_push($photos_vendus, $ligne);
+                    array_push($photos_vendus, $ligne); //on stocke les photos déjà vendues dans un tableau
                   }
                 } echo '</div>';
               }
-              if (!empty($photos_vendus)) {
+              if (!empty($photos_vendus)) { //si le photographe a des photos vendues
                 
                 echo '<hr class="my-4">';
                 echo '<p class="lead">Photos vendus : </p>';
                 echo '<div class="row row-cols-6">';
                 
-                foreach ($photos_vendus as $ligne) {
+                foreach ($photos_vendus as $ligne) { //pour chaque photo vendue par le photographe
                   echo '<div class="col">';
-                  echo "<img src='images/galerie/".htmlentities($ligne['nomPhoto'])."' id='photo' class='img-responsive float-left h-100 w-100' >" ;
+                  echo "<img src='images/galerie/".htmlentities($ligne['nomPhoto'])."' id='photo' class='img-responsive float-left h-100 w-100' >" ; //affichage de la photo
                   echo '</div>';
 
                 } echo '</div>';
@@ -59,7 +59,7 @@
               $requete = $db->query($query);
               $result = $requete->fetchAll();
               
-              if (!empty($result)) {
+              if (!empty($result)) { //si le visiteur a des photos achetées
                 echo '<hr class="my-4">';
                 echo '<p class="lead">Photos achetées : </p>';
                 echo '<div class="row row-cols-6">';
@@ -67,9 +67,10 @@
                 $query = "SELECT * from photoforyou.galerie where id_acheteur = ".$_SESSION['idUtilisateur'].";";
                 $requete = $db->query($query);
                 $result = $requete->fetchAll();
-                foreach ($result as $ligne) {
+
+                foreach ($result as $ligne) { //pour chaque photo achetée par le visiteur
                   echo '<div class="col">';
-                  echo "<img src='images/galerie/".htmlentities($ligne['nomPhoto'])."' id='photo' class='img-responsive float-left h-100 w-100' >" ;
+                  echo "<img src='images/galerie/".htmlentities($ligne['nomPhoto'])."' id='photo' class='img-responsive float-left h-100 w-100' >" ; //affichage de la photo
                   echo '</div>';
                 }
               }  

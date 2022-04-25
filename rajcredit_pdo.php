@@ -13,7 +13,7 @@ if (isset($_POST['rajouter'])) {
         $query = "SELECT * from photoforyou.users where id = ".$_SESSION['idUtilisateur'].";";
         $requete = $db->query($query);
         $result = $requete->fetch();
-        $_SESSION['credit'] = htmlentities($result['credit']);  //mise a jour des crédits dans bdd et session de l'utilisateur
+        $_SESSION['credit'] = htmlentities($result['credit']); //on met à jour le credit de l'utilisateur
         echo //sinon script et redirection
         '<script>
         alert("Vous avez bien rajouter des crédits !");

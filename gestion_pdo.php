@@ -27,27 +27,27 @@ if($_SESSION['type'] != 'admin'){ //double vérification, redirection si on est 
                     // Banni devient valid
                     $req = $db->prepare("UPDATE photoforyou.users SET etat='valid' WHERE id = :id");
                     $req->bindValue(':id', $id, PDO::PARAM_INT);
-                    $req->execute();
+                    $req->execute(); 
                 }
 
-                if ($etat == 'suppr') {
+                if ($etat == 'suppr') { //si son etat est suppr
                     
-                    $requete = 'SELECT nomPhoto FROM  photoforyou.galerie where id_vendeur = :id';
+                    $requete = 'SELECT nomPhoto FROM  photoforyou.galerie where id_vendeur = :id'; 
                     $instruction = $db->prepare($requete);
                     $instruction->bindParam(':id', $id, PDO::PARAM_STR);
                     $instruction->execute();
                     $result = $instruction->fetchAll();
                     foreach ($result as $ligne) {
-                        unlink("images/galerie/".($ligne['nomPhoto']));
+                        unlink("images/galerie/".($ligne['nomPhoto'])); //on supprime les photos en local
                     }
 
                     $req = $db->prepare("DELETE FROM photoforyou.galerie WHERE id_vendeur = :id");
                     $req->bindValue(':id', $id, PDO::PARAM_INT);
-                    $req->execute();
-                    // Supprime l'utilisateur
+                    $req->execute(); //on supprime les photos de la bdd
+                   
                     $req = $db->prepare("DELETE FROM photoforyou.users WHERE id = :id");
                     $req->bindValue(':id', $id, PDO::PARAM_INT);
-                    $req->execute();
+                    $req->execute(); //on supprime l'utilisateur de la bdd
                 }
                 header("location:gestionUtilisateur.php");
             }

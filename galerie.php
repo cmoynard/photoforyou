@@ -21,7 +21,7 @@
         $query = "SELECT * from photoforyou.galerie where id_acheteur IS NULL;";
         $requete = $db->query($query);
         $result = $requete->fetchAll();
-        foreach ($result as $ligne) {
+        foreach ($result as $ligne) { //affichage des photos non achetées
           $galPhoto = "images/galerie/".htmlentities($ligne['nomPhoto']); //pour chaque élement dans le tableau, on récupre chaque info de la photo en fonction de son id et on recupère la photo dans le dossier d'image
             
           echo //on génère la card de la photo, avec toute les infos de cette dernière dans la bdd
