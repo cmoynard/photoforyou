@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : Dim 24 avr. 2022 à 16:34
+-- Généré le : lun. 02 mai 2022 à 12:17
 -- Version du serveur :  8.0.21
 -- Version de PHP : 7.3.21
 
@@ -69,27 +69,40 @@ CREATE TABLE IF NOT EXISTS `galerie` (
   `id_acheteur` int DEFAULT NULL,
   PRIMARY KEY (`idPhoto`),
   KEY `id_users` (`id_vendeur`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `galerie`
 --
 
 INSERT INTO `galerie` (`idPhoto`, `nomPhoto`, `nomCard`, `descCard`, `prixCard`, `id_vendeur`, `id_acheteur`) VALUES
-(1, 'imagetest.jpg', 'Jolie Fleure', 'Une belle fleure prise en photo par le talentueux                   Sungondese-Jr.', 45, 0, 13),
-(2, 'imagedeux.jpg', 'Crique maritime', 'Un paysage féérique qui donne envie de voyager.', 60, 0, 13),
-(3, 'imagetrois.jpg', 'Vallée Rocheuse', 'Des rochers qui font plaisir #moumou.', 30, 0, NULL),
-(4, 'imagequatre.jpg', 'Fortnite', 'Un lieu emblématique du jeu populaire Fortnite Battle royale.', 100, 0, NULL),
-(5, 'téléchargé.jpg', 'Daniel Craig', 'Le c&eacute;l&egrave;bre acteur qui incarne James Bond dans les films du m&ecirc;me nom.', 75, 0, NULL),
+(1, 'imagetest.jpg', 'Jolie Fleure', 'Une belle fleure prise en photo par le talentueux                   Sungondese-Jr.', 45, 10, 13),
+(2, 'imagedeux.jpg', 'Crique maritime', 'Un paysage féérique qui donne envie de voyager.', 60, 4, 13),
+(3, 'imagetrois.jpg', 'Vallée Rocheuse', 'Des rochers qui font plaisir #moumou.', 30, 10, NULL),
+(4, 'imagequatre.jpg', 'Fortnite', 'Un lieu emblématique du jeu populaire Fortnite Battle royale.', 100, 0, 12),
+(5, 'téléchargé.jpg', 'Daniel Craig', 'Le c&eacute;l&egrave;bre acteur qui incarne James Bond dans les films du m&ecirc;me nom.', 75, 10, NULL),
 (6, 'FDERXFzXMAcZIuI.jpg', 'Doigby', 'Le streamer qui &agrave; &eacute;t&eacute; le GOAT durant le ZEVENT 2021', 400, 0, NULL),
 (7, 'Null-on-Twitter_-_...-_.jpg', 'Denji', 'Le protagoniste de Chainsaw Man, il est bg', 5000, 0, NULL),
 (8, 'blush.jpg', 'Dodoko', 'Un personnage du jeu Genshin Impact', 800, 0, NULL),
 (9, 'IMG_20210519_140214_117.jpg', 'Terry', 'Un homme extrêmement beau, donc qui vaut très chère', 9000, 0, NULL),
-(10, '2DAC42A8-05BA-49EE-A45C-0B1413957C46.jpeg', 'Montebello', 'Il prend des photos en secret le bougre', 1000, 0, NULL),
+(10, '2DAC42A8-05BA-49EE-A45C-0B1413957C46.jpeg', 'Montebello', 'Il prend des photos en secret le bougre', 1000, 0, 12),
 (11, 'FE1x-EQXwAEeCB4.jpg', 'test', 'test', 1, 0, NULL),
-(12, 'p1100252.jpg', 'Photo', 'belle photo', 300, 0, NULL),
-(13, 'feur.jpg', 'gogogog', '&lt;script&gt;alert(&quot;ok&quot;)&lt;/script&gt;', 50, 0, NULL),
-(14, 'ruby-programming-language.png', 'Ruby', 'langage d\'un site en poo', 80, 0, NULL);
+(12, 'p1100252.jpg', 'Photo', 'belle photo', 300, 0, NULL);
+
+--
+-- Déclencheurs `galerie`
+--
+DROP TRIGGER IF EXISTS `prix_correct`;
+DELIMITER $$
+CREATE TRIGGER `prix_correct` BEFORE INSERT ON `galerie` FOR EACH ROW BEGIN
+
+IF prixCard > 100 THEN
+	SET NEW.prixCard=100;
+END IF;
+
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -131,7 +144,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `photo` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `etat` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `users`
@@ -140,9 +153,28 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`id`, `nom`, `prenom`, `email`, `type`, `mdp`, `credit`, `photo`, `etat`) VALUES
 (5, 'Chovanec', 'Jeremy', 'grosbg@gmail.com', 'photographe', '25d55ad283aa400af464c76d713c07ad', 3954, 'FDERXFzXMAcZIuI.jpg', 'valid'),
 (10, 'Evin', 'Baptiste', 'baptbg@gmail.com', 'photographe', '5e8667a439c68f5145dd2fcbecf02209', 4610, 'FDERXFzXMAcZIuI.jpg', 'valid'),
-(12, 'MONROCQ', 'Ugo', 'aaaa@aa.fr', 'client', '25d55ad283aa400af464c76d713c07ad', 0, 'téléchargé.jpg', 'valid'),
+(12, 'MONROCQ', 'Ugo', 'aaaa@aa.fr', 'client', '25d55ad283aa400af464c76d713c07ad', 0, 'téléchargé.jpg', 'banni'),
 (13, 'admin', 'admin', 'admin@admin.com', 'admin', '3a4ebf16a4795ad258e5408bae7be341', 99745, 'adminphoto.jpg', 'valid'),
-(14, 'wyrwal', 'adrien', 'adrien@gmail.com', 'client', '25d55ad283aa400af464c76d713c07ad', 2955, 'Type-Belfort.jpg', 'banni');
+(14, 'Moynard', 'test', 'test@test', 'client', '25d55ad283aa400af464c76d713c07ad', 400, 'admin.jpg', 'valid');
+
+--
+-- Déclencheurs `users`
+--
+DROP TRIGGER IF EXISTS `nom_correct`;
+DELIMITER $$
+CREATE TRIGGER `nom_correct` BEFORE INSERT ON `users` FOR EACH ROW BEGIN
+SET NEW.nom=CONCAT(UPPER(SUBSTRING(NEW.nom,1,1)),LOWER(SUBSTRING(NEW.nom,2)));
+END
+$$
+DELIMITER ;
+DROP TRIGGER IF EXISTS `prenom_correct`;
+DELIMITER $$
+CREATE TRIGGER `prenom_correct` BEFORE INSERT ON `users` FOR EACH ROW BEGIN
+SET NEW.prenom=CONCAT(UPPER(SUBSTRING(NEW.prenom,1,1)),
+                      LOWER(SUBSTRING(NEW.prenom,2)));
+END
+$$
+DELIMITER ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
