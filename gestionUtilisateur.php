@@ -30,7 +30,7 @@ if($_SESSION['type'] != 'admin'){
         			    $req = $db->query("SELECT * FROM photoforyou.users WHERE type != 'admin'"); // tableau qui affiche tout les utilisateur du site (saufs admins)
         			    $data = $req->fetchAll();
         			    echo '';
-        			    foreach ($data as $li){
+        			    foreach ($data as $li){ //on affiche les données de chaque utilisateur
         			        echo '<tr>';
         			        echo '<td>'.$li['id'].'</td>';
         			        echo '<td>'.$li['nom'].'</td>';
